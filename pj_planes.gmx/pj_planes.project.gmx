@@ -19,11 +19,15 @@
   <scripts name="scripts">
     <script>scripts\scr_moveplane.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\Main_Font</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_plane</object>
     <object>objects\obj_controlbackground</object>
     <object>objects\obj_runway</object>
     <object>objects\obj_ground</object>
+    <object>objects\obj_testtext</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
