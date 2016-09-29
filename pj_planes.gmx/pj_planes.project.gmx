@@ -23,14 +23,15 @@
     <font>fonts\Main_Font</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_plane</object>
-    <object>objects\obj_controlbackground</object>
-    <object>objects\obj_runway</object>
     <object>objects\obj_ground</object>
-    <object>objects\obj_testtext</object>
+    <object>objects\obj_runway</object>
+    <object>objects\obj_controlbackground</object>
+    <object>objects\obj_plane</object>
+    <object>objects\obj_speedtxt</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rm_init</room>
+    <room>rooms\rm_flight</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
