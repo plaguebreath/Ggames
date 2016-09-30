@@ -25,38 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-
-/// Gravity
+            <string>/// Gravity check
 if !place_meeting(x, y + sprite_height, obj_ground)
-   {
-   gravity = 0.06;
-   }
+{
+  gravity = 0.06;
+}
 else
-   {
-   gravity = 0;
-   }
-
-if (place_meeting(x+hspeed,y +1,obj_ground)) {
-
-speed=0;
-direction =0;
+{
+  gravity = 0;
+  if (place_meeting(x+hspeed,y +1,obj_ground)) 
+  {
+    speed=0;
+    direction =0;
+  }
+  if (place_meeting(x,y+vspeed +1,obj_ground)) 
+  {
+    speed=0;
+    direction = 0;
+    y = room_height - obj_ground.sprite_height - 30 ;
+  }
 }
-
-if (place_meeting(x,y+vspeed +1,obj_ground)) {
-
-speed=0;
-direction = 0;
-y = room_height - obj_ground.sprite_height - 30 ;
-}
-
-/// Execute Script
+/// Execute Script movement plane object
 scr_moveplane();
-
+// Update Object Text with values after movement of plane
 global.speedtxt = speed;
 global.angletxt = direction;
-global.altitudetxt = rm_flight.room_height - y
+global.altitudetxt = rm_flight.room_height - y;
 </string>
           </argument>
         </arguments>
@@ -79,7 +73,9 @@ global.altitudetxt = rm_flight.room_height - y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>//Draw self based on Sprite
+draw_self()
+//Draw Bounding Box around Object
 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 
 </string>
