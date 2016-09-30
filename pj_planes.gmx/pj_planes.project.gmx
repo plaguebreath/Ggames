@@ -10,10 +10,12 @@
     <sprite>sprites\sp_plane</sprite>
     <sprite>sprites\sp_runway</sprite>
     <sprite>sprites\sp_ground</sprite>
+    <sprite>sprites\sp_fokker</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_back</background>
     <background>background\bg_ground</background>
+    <background>background\bg_wartime</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -25,7 +27,6 @@
   <objects name="objects">
     <object>objects\obj_ground</object>
     <object>objects\obj_runway</object>
-    <object>objects\obj_controlbackground</object>
     <object>objects\obj_plane</object>
     <object>objects\obj_speedtxt</object>
   </objects>
