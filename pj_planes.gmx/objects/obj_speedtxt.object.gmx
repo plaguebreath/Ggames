@@ -27,9 +27,10 @@
             <kind>1</kind>
             <string>draw_set_font(Main_Font)
 //draw_text(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(global.speedtxt) )
-draw_text_colour(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(global.speedtxt),c_blue,c_blue,c_black,c_black,1 )
-draw_text_colour(view_xview[0]+20, view_yview[0] + 40,"Direction = " + string(global.angletxt),c_blue,c_blue,c_black,c_black,1 )
-draw_text_colour(view_xview[0]+20, view_yview[0] + 60,"Altitude = " + string(global.altitudetxt),c_blue,c_blue,c_black,c_black,1 )
+draw_text_colour(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(global.speedtxt),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 40,"Direction = " + string(global.angletxt),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 60,"Altitude = " + string(global.altitudetxt),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 80,"Runway = " + string(global.runway),c_blue,c_blue,c_black,c_black,1 );
 </string>
           </argument>
         </arguments>

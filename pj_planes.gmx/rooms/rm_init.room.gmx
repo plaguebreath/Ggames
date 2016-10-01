@@ -13,10 +13,13 @@
   <code>// Declare standard color for drawing
 draw_set_colour(c_red);
 
-// Declare global directory
+// Declare global variables
 global.speedtxt = "";
 global.angletxt = "";
 global.altitudetxt = "";
+global.runway = false;
+global.isplanelanded = true;
+global.isplanecrashed = false;
 
 //Call the next room
 room_goto_next()</code>

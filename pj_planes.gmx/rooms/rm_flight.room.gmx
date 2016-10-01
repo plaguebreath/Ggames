@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code></code>
   <enableViews>-1</enableViews>
-  <clearViewBackground>-1</clearViewBackground>
+  <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>0</isSet>
@@ -52,8 +52,8 @@
   </views>
   <instances>
     <instance objName="obj_speedtxt" x="32" y="1120" name="inst_883F056D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_plane" x="96" y="1472" name="inst_5D85BA28" locked="0" code="" scaleX="0.300000011920929" scaleY="0.300000011920929" colour="4294967295" rotation="0"/>
-    <instance objName="obj_runway" x="32" y="1520" name="inst_B970542B" locked="0" code="" scaleX="1" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_plane" x="64" y="1504" name="inst_5D85BA28" locked="0" code="" scaleX="0.268482476472855" scaleY="0.264591425657272" colour="4294967295" rotation="0"/>
+    <instance objName="obj_runway" x="32" y="1520" name="inst_B970542B" locked="0" code="" scaleX="1.6457142829895" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_ground" x="0" y="1520" name="inst_6A0A87D5" locked="0" code="" scaleX="128" scaleY="0.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

@@ -25,32 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Gravity check
-if !place_meeting(x, y + sprite_height, obj_ground)
-{
-  gravity = 0.06;
-}
-else
-{
+            <string>/// local variables
+global.runway = false;
+    
+//controllo se è sulla pista di atterraggio ....
+if  place_meeting(x,y+vspeed,obj_runway)
+  {
+  global.runway = true;
+  } 
+    
+/// Gravity check 
+//if (place_meeting(x+hspeed -10,y - 10 ,obj_ground) || place_meeting(x -10,y+vspeed -10,obj_ground))
+if  place_meeting(x,y+vspeed -10,obj_ground)
+  {
   gravity = 0;
-  if (place_meeting(x+hspeed,y +1,obj_ground)) 
-  {
-    speed=0;
-    direction =0;
+  speed = 0;
+  direction =0;
+  y = obj_ground.y - obj_ground.sprite_height ;
+  global.isplanelanded =  true;
   }
-  if (place_meeting(x,y+vspeed +1,obj_ground)) 
+  else
   {
-    speed=0;
-    direction = 0;
-    y = room_height - obj_ground.sprite_height - 30 ;
+    if !(global.isplanelanded)
+      {
+      gravity = 0.12;
+      }
   }
-}
 /// Execute Script movement plane object
 scr_moveplane();
 // Update Object Text with values after movement of plane
 global.speedtxt = speed;
 global.angletxt = direction;
-global.altitudetxt = rm_flight.room_height - y;
+global.altitudetxt = room_height - y;
 </string>
           </argument>
         </arguments>

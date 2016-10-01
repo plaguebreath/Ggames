@@ -1,4 +1,4 @@
-/// Variables
+/// Local Variables
 right = keyboard_check(ord('D'))
 left =  keyboard_check(ord('A'))
 up = keyboard_check(ord('W'))
@@ -27,12 +27,23 @@ if keyboard_check(vk_anykey)
       obj_plane.speed -= speedfactorinc;
     }
   }
-  if (up)
+  if (up) 
   { 
-    obj_plane.direction += turnfactor ;
+    if (global.isplanelanded)
+    {
+      if (obj_plane.speed > 4)
+      {
+        obj_plane.direction += turnfactor ;
+        global.isplanelanded = false;
+      } 
+    }
+    else
+    {
+    obj_plane.direction += turnfactor ;   
+    }   
     obj_plane.image_index = 2;
   }
-  if (down)
+  if ((down) && !(global.isplanelanded))
   { 
     obj_plane.direction -= turnfactor ;
     obj_plane.image_index = 1;
