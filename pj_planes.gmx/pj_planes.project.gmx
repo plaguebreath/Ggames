@@ -7,10 +7,12 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sp_plane</sprite>
     <sprite>sprites\sp_runway</sprite>
     <sprite>sprites\sp_ground</sprite>
     <sprite>sprites\sp_fokker</sprite>
+    <sprite>sprites\sp_fokkerdown</sprite>
+    <sprite>sprites\sp_fokkerup</sprite>
+    <sprite>sprites\sp_fokkercrash</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_back</background>

@@ -8,7 +8,8 @@ speedplanemin = 0
 speedfactorinc = 0.1  //Inc or Dec velocity on LEFT /  RIGHT
 turnfactor = 2 //Add or Sub angle when UP o DOWN
 
-obj_plane.image_index = 0;
+sprite_index = sp_fokker;
+//obj_plane.image_index = 0;
 
 /// Movement check
 if keyboard_check(vk_anykey) 
@@ -41,12 +42,12 @@ if keyboard_check(vk_anykey)
     {
     obj_plane.direction += turnfactor ;   
     }   
-    obj_plane.image_index = 2;
+    sprite_index = sp_fokkerup;
   }
   if ((down) && !(global.isplanelanded))
   { 
     obj_plane.direction -= turnfactor ;
-    obj_plane.image_index = 1;
+    sprite_index = sp_fokkerdown;
   }
 }
 

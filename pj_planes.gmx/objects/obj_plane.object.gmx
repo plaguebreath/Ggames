@@ -25,9 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// local variables
+            <string>/// variables
 global.runway = false;
-    
+global.isplanecrashed = false;
+image_speed = 1;
+
+escaped = keyboard_check(vk_backspace);
+
+if (escaped){
+  y = obj_ground.y - obj_ground.sprite_height ;
+  x = 60;
+  gravity = 0;
+  speed = 0;
+  direction =0;
+}
+   
 //controllo se è sulla pista di atterraggio ....
 if  place_meeting(x,y+vspeed,obj_runway)
   {
@@ -36,23 +48,37 @@ if  place_meeting(x,y+vspeed,obj_runway)
     
 /// Gravity check 
 //if (place_meeting(x+hspeed -10,y - 10 ,obj_ground) || place_meeting(x -10,y+vspeed -10,obj_ground))
-if  place_meeting(x,y+vspeed -10,obj_ground)
-  {
+if  place_meeting(x,y+vspeed -10,obj_ground){
+  //if ((direction &gt;= 20 || direction &lt;= 345) &amp;&amp; speed &gt; 0.5 &amp;&amp; !(global.runway)){
+  if (!global.runway){
+    global.isplanelanded =  false;
+    global.isplanecrashed =  true;
+  }else{
+    y = obj_ground.y - obj_ground.sprite_height ;
+    global.isplanelanded =  true;
+    global.isplanecrashed =  false;
+  }
   gravity = 0;
   speed = 0;
   direction =0;
-  y = obj_ground.y - obj_ground.sprite_height ;
-  global.isplanelanded =  true;
-  }
-  else
+}else{
+  if !(global.isplanelanded)
   {
-    if !(global.isplanelanded)
-      {
-      gravity = 0.12;
-      }
+    gravity = 0.12;
   }
+}
 /// Execute Script movement plane object
-scr_moveplane();
+if !(global.isplanecrashed){
+  scr_moveplane();
+}else{
+  sprite_index = sp_fokkercrash;
+  image_speed = 0.2;
+  if (image_index &gt;= image_number - 1) 
+    image_speed = 0;
+/// Execute just once animation crashed
+  //sprite_index = sp_fokkercrash;
+  //image_speed = 0.3
+}
 // Update Object Text with values after movement of plane
 global.speedtxt = speed;
 global.angletxt = direction;
@@ -81,9 +107,18 @@ global.altitudetxt = room_height - y;
             <kind>1</kind>
             <string>//Draw self based on Sprite
 draw_self()
+//Crash animation
+if (global.isplanecrashed){
+  //sprite_index = sp_fokkercrash;
+  //if(image_index&gt;=sprite_get_number(sprite_index)){//Animation Over
+    //sprite_index=_spr_default//Go back to default sprite
+  //  image_speed= 0;
+  //}else{
+  //  image_speed = 0.3;
+ // }
+}
 //Draw Bounding Box around Object
 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
-
 </string>
           </argument>
         </arguments>

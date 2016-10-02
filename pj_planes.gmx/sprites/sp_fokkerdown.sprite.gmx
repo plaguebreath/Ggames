@@ -9,7 +9,7 @@
   <bboxmode>0</bboxmode>
   <bbox_left>5</bbox_left>
   <bbox_right>241</bbox_right>
-  <bbox_top>71</bbox_top>
+  <bbox_top>65</bbox_top>
   <bbox_bottom>195</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
@@ -21,6 +21,6 @@
   <width>256</width>
   <height>256</height>
   <frames>
-    <frame index="0">images\sp_fokker_0.png</frame>
+    <frame index="0">images\sp_fokkerdown_0.png</frame>
   </frames>
 </sprite>
