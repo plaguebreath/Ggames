@@ -3,10 +3,6 @@ right = keyboard_check(ord('D'))
 left =  keyboard_check(ord('A'))
 up = keyboard_check(ord('W'))
 down = keyboard_check(ord('S'))
-speedplanemax = 10
-speedplanemin = 0
-speedfactorinc = 0.1  //Inc or Dec velocity on LEFT /  RIGHT
-turnfactor = 2 //Add or Sub angle when UP o DOWN
 
 sprite_index = sp_fokker;
 //obj_plane.image_index = 0;
@@ -14,39 +10,39 @@ sprite_index = sp_fokker;
 /// Movement check
 if keyboard_check(vk_anykey) 
 { 
-  if (right) 
-  { 
-    if (obj_plane.speed + speedfactorinc <= speedplanemax) 
-    {
-      obj_plane.speed += speedfactorinc;
+  if (right){ 
+    //if (obj_plane.speed + speedfactorinc <= speedplanemax) 
+    //{
+    //  obj_plane.speed += speedfactorinc;
+    //}
+    if (obj_plane.speed + global.facceleration < global.speedplanemax){ 
+      motion_add(obj_plane.direction, global.facceleration);
+    }else{
+      obj_plane.speed = global.speedplanemax;
     }
   }
-  if (left) 
-  {
-    if (obj_plane.speed - speedfactorinc >= speedplanemin)
-    {
-      obj_plane.speed -= speedfactorinc;
-    }
+  if (left){
+    //if (obj_plane.speed - speedfactorinc >= speedplanemin)
+    //{
+    //  obj_plane.speed -= speedfactorinc;
+    //}
+    if (obj_plane.speed > 1) motion_add(obj_plane.direction, -1 * (global.facceleration / 2))
   }
-  if (up) 
-  { 
-    if (global.isplanelanded)
-    {
-      if (obj_plane.speed > 4)
+  if (up){ 
+    if (global.isplanelanded){
+      if (obj_plane.speed > global.takeoffspeed)
       {
-        obj_plane.direction += turnfactor ;
+        obj_plane.direction += global.turnfactor ;
         global.isplanelanded = false;
       } 
     }
-    else
-    {
-    obj_plane.direction += turnfactor ;   
+    else{
+      obj_plane.direction += global.turnfactor ;   
     }   
     sprite_index = sp_fokkerup;
   }
-  if ((down) && !(global.isplanelanded))
-  { 
-    obj_plane.direction -= turnfactor ;
+  if ((down) && !(global.isplanelanded)){ 
+    obj_plane.direction -= global.turnfactor ;
     sprite_index = sp_fokkerdown;
   }
 }
