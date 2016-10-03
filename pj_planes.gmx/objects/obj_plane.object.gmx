@@ -8,29 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>standardallignsprite = image_yscale; 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -53,42 +30,26 @@ global.runway = false;
 global.isplanecrashed = false;
 image_speed = 1;
 
-//On press of BackSpace reset position of plane
-restart = keyboard_check(vk_backspace);
-if (restart){
+escaped = keyboard_check(vk_backspace);
+
+if (escaped){
   y = obj_ground.y - obj_ground.sprite_height ;
   x = 60;
   gravity = 0;
   speed = 0;
   direction =0;
-  image_yscale = abs(image_yscale) ;
 }
-// Check if the plane over the upper limit of the room about 100px he go on STALL
-if (room_height - y &gt; room_height +100){
-  global.isplanestall = true;
-  speed = 0;
-}else{
-  global.isplanestall = false;
-} 
-
-// Check for plane outside the borders of the room
-if x  &gt; room_width + sprite_width || x  &lt; 0-sprite_width{
-//X borders bounce on opposite direction
-  direction = 180 - direction;
-}
-// Take care of the flip of image based on the direction
-if (direction &gt;= 90 &amp;&amp; direction &lt;= 270){
-  image_yscale = -1 * standardallignsprite;
-}else{
-  image_yscale = standardallignsprite;
-}
-
-// Check if plane is on the runway
-if  place_meeting(x,y+vspeed,obj_runway){
+   
+//controllo se è sulla pista di atterraggio ....
+if  place_meeting(x,y+vspeed,obj_runway)
+  {
   global.runway = true;
-}   
-/// Check Collision on ground and if touch the landing runway
+  } 
+    
+/// Gravity check 
+//if (place_meeting(x+hspeed -10,y - 10 ,obj_ground) || place_meeting(x -10,y+vspeed -10,obj_ground))
 if  place_meeting(x,y+vspeed -10,obj_ground){
+  //if ((direction &gt;= 20 || direction &lt;= 345) &amp;&amp; speed &gt; 0.5 &amp;&amp; !(global.runway)){
   if (!global.runway){
     global.isplanelanded =  false;
     global.isplanecrashed =  true;
@@ -103,14 +64,7 @@ if  place_meeting(x,y+vspeed -10,obj_ground){
 }else{
   if !(global.isplanelanded)
   {
-    if speed &gt; global.speedplanemax{
-      speed = global.speedplanemax;
-      gravity = 0;
-    }else if speed &gt; global.speedplanemax / 2 {
-      gravity = 0.005;
-    }else{
-      gravity = 0.1;
-    }
+    gravity = 0.12;
   }
 }
 /// Execute Script movement plane object
@@ -121,6 +75,9 @@ if !(global.isplanecrashed){
   image_speed = 0.2;
   if (image_index &gt;= image_number - 1) 
     image_speed = 0;
+/// Execute just once animation crashed
+  //sprite_index = sp_fokkercrash;
+  //image_speed = 0.3
 }
 // Update Object Text with values after movement of plane
 global.speedtxt = speed;

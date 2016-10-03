@@ -20,14 +20,6 @@ global.altitudetxt = "";
 global.runway = false;
 global.isplanelanded = true;
 global.isplanecrashed = false;
-global.isplanestall = false;
-global.speedplanemax = 10;
-global.speedplanemin = 0;
-global.turnfactor = 2; //Add or Sub angle when UP o DOWN
-global.takeoffspeed = 5;
-global.facceleration = 0.10;
-global.standardallignsprite = 0; 
-
 
 //Call the next room
 room_goto_next()</code>
