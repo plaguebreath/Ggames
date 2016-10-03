@@ -1,9 +1,10 @@
 /// Local Variables
-right = keyboard_check(ord('D'))
-left =  keyboard_check(ord('A'))
-up = keyboard_check(ord('W'))
-down = keyboard_check(ord('S'))
-fire = keyboard_check(vk_space)
+right = keyboard_check(ord('D'));
+left =  keyboard_check(ord('A'));
+up = keyboard_check(ord('W'));
+down = keyboard_check(ord('S'));
+firemg = keyboard_check(vk_space);
+firebomb = keyboard_check(vk_enter);
 
 sprite_index = sp_fokker;
 //obj_plane.image_index = 0;
@@ -42,19 +43,35 @@ if keyboard_check(vk_anykey)
     }   
     sprite_index = sp_fokkerup;
   }
-  if ((down) && !(isplanelanded)){ 
+  if (down && !isplanelanded){ 
     obj_plane.direction -= turnfactor ;
     sprite_index = sp_fokkerdown;
   }
   
-  if (fire) {
-    timeCurrent = current_time; 
-    if (timeCurrent - timeInit >= interval) { 
-      with (instance_create(x +hspeed +20 , y + vspeed, obj_bullet)) {
+  if (firemg && !isplanelanded && obj_plane.bullets > 0) {
+    timeCurrentmg = current_time; 
+    if (timeCurrentmg - timeInitmg >= fireintervalmg) { 
+      with (instance_create(x+lengthdir_x(offsetlenmg,direction),y+lengthdir_y(offsetlenmg,direction) -5, obj_bullet)) {    
         direction = obj_plane.direction;
-        speed = 20;
+        image_angle =  direction;
+        speed = bulletspeed;
+        obj_plane.bullets -= 1;   
       }     
-    timeInit = timeCurrent; // update the time to compare to
+    timeInitmg = timeCurrentmg; // update the time to compare to
+    }
+  }
+  
+  if (firebomb && !isplanelanded && obj_plane.bombs > 0) {
+    timeCurrentbomb = current_time; 
+    if (timeCurrentbomb - timeInitbomb >= fireintervalbomb) { 
+      //with (instance_create(x+lengthdir_x(offsetlenbomb,direction),y+lengthdir_y(offsetlenbomb,direction) , obj_bomb)) {    
+      with (instance_create(x+lengthdir_x(offsetlenbomb,direction),y+lengthdir_y(offsetlenbomb,direction) +25 , obj_bomb)) {
+        direction = obj_plane.direction;
+        image_angle =  direction;       
+        speed = obj_plane.speed; 
+        obj_plane.bombs -= 1;   
+      }     
+    timeInitbomb = timeCurrentbomb; // update the time to compare to
     }
   }
 }

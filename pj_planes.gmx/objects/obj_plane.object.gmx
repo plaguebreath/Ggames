@@ -34,11 +34,19 @@ speedplanemax = 10;
 turnfactor = 2;
 takeoffspeed = 5;
 facceleration = 0.10;
-pressfiretime = 0;
 
-timeInit = current_time;
-timeCurrent = current_time;
-interval = 40; // interval between in milliseconds
+timeInitmg = current_time;
+timeCurrentmg = current_time;
+fireintervalmg = 40; // interval between fire in milliseconds
+offsetlenmg = 32;  // posizione asse x
+
+timeInitbomb = current_time;
+timeCurrentbomb = current_time;
+fireintervalbomb = 1000; // interval between fire in milliseconds
+offsetlenbomb = -5;  // posizione asse x
+
+bullets = 1000;
+bombs = 10;
 </string>
           </argument>
         </arguments>
@@ -75,8 +83,8 @@ if (restart){
   direction =0;
   image_yscale = abs(image_yscale) ;
 }
-// Check if the plane over the upper limit of the room about 100px he go on STALL
-if (room_height - y &gt; room_height +100){
+// Check if the plane over the upper limit of the room about 200px he go on STALL
+if (room_height - y &gt; room_height + 200){
   isplanestall = true;
   speed = 0;
 }else{
@@ -158,16 +166,6 @@ global.altitudetxt = room_height - y;
             <kind>1</kind>
             <string>//Draw self based on Sprite
 draw_self()
-//Crash animation
-//if (global.isplanecrashed){
-  //sprite_index = sp_fokkercrash;
-  //if(image_index&gt;=sprite_get_number(sprite_index)){//Animation Over
-    //sprite_index=_spr_default//Go back to default sprite
-  //  image_speed= 0;
-  //}else{
-  //  image_speed = 0.3;
- // }
-//}
 //Draw Bounding Box around Object
 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 </string>
@@ -176,7 +174,7 @@ draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
@@ -187,10 +185,5 @@ draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>256,0</point>
-    <point>256,256</point>
-    <point>0,256</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>
