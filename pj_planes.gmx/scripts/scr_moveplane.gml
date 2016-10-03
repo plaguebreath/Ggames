@@ -3,51 +3,59 @@ right = keyboard_check(ord('D'))
 left =  keyboard_check(ord('A'))
 up = keyboard_check(ord('W'))
 down = keyboard_check(ord('S'))
-speedplanemax = 10
-speedplanemin = 0
-speedfactorinc = 0.1  //Inc or Dec velocity on LEFT /  RIGHT
-turnfactor = 2 //Add or Sub angle when UP o DOWN
+fire = keyboard_check(vk_space)
 
 sprite_index = sp_fokker;
 //obj_plane.image_index = 0;
 
 /// Movement check
 if keyboard_check(vk_anykey) 
-{ 
-  if (right) 
-  { 
-    if (obj_plane.speed + speedfactorinc <= speedplanemax) 
-    {
-      obj_plane.speed += speedfactorinc;
+{   
+  if (right){ 
+    //if (obj_plane.speed + speedfactorinc <= speedplanemax) 
+    //{
+    //  obj_plane.speed += speedfactorinc;
+    //}
+    if (obj_plane.speed + facceleration < speedplanemax){ 
+      motion_add(obj_plane.direction, facceleration);
+    }else{
+      obj_plane.speed = speedplanemax;
     }
   }
-  if (left) 
-  {
-    if (obj_plane.speed - speedfactorinc >= speedplanemin)
-    {
-      obj_plane.speed -= speedfactorinc;
-    }
+  if (left){
+    //if (obj_plane.speed - speedfactorinc >= speedplanemin)
+    //{
+    //  obj_plane.speed -= speedfactorinc;
+    //}
+    if (obj_plane.speed > 1) motion_add(obj_plane.direction, -1 * (facceleration / 2))
   }
-  if (up) 
-  { 
-    if (global.isplanelanded)
-    {
-      if (obj_plane.speed > 4)
+  if (up){ 
+    if (isplanelanded){
+      if (obj_plane.speed > takeoffspeed)
       {
         obj_plane.direction += turnfactor ;
-        global.isplanelanded = false;
+        isplanelanded = false;
       } 
     }
-    else
-    {
-    obj_plane.direction += turnfactor ;   
+    else{
+      obj_plane.direction += turnfactor ;   
     }   
     sprite_index = sp_fokkerup;
   }
-  if ((down) && !(global.isplanelanded))
-  { 
+  if ((down) && !(isplanelanded)){ 
     obj_plane.direction -= turnfactor ;
     sprite_index = sp_fokkerdown;
+  }
+  
+  if (fire) {
+    timeCurrent = current_time; 
+    if (timeCurrent - timeInit >= interval) { 
+      with (instance_create(x +hspeed +20 , y + vspeed, obj_bullet)) {
+        direction = obj_plane.direction;
+        speed = 20;
+      }     
+    timeInit = timeCurrent; // update the time to compare to
+    }
   }
 }
 

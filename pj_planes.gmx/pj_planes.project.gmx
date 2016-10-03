@@ -13,6 +13,7 @@
     <sprite>sprites\sp_fokkerdown</sprite>
     <sprite>sprites\sp_fokkerup</sprite>
     <sprite>sprites\sp_fokkercrash</sprite>
+    <sprite>sprites\sp_bullet</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_back</background>
@@ -31,6 +32,7 @@
     <object>objects\obj_runway</object>
     <object>objects\obj_plane</object>
     <object>objects\obj_speedtxt</object>
+    <object>objects\obj_bullet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>

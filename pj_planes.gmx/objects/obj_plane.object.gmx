@@ -8,6 +8,42 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Instance variables
+standardallignsprite = image_yscale; 
+isplanelanded = false;
+isplanecrashed = false;
+isplanestall = false;
+speedplanemax = 10;
+turnfactor = 2;
+takeoffspeed = 5;
+facceleration = 0.10;
+pressfiretime = 0;
+
+timeInit = current_time;
+timeCurrent = current_time;
+interval = 40; // interval between in milliseconds
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -26,58 +62,73 @@
           <argument>
             <kind>1</kind>
             <string>/// variables
-global.runway = false;
-global.isplanecrashed = false;
+//global.runway = false;
+//global.isplanecrashed = false;
 image_speed = 1;
-
-escaped = keyboard_check(vk_backspace);
-
-if (escaped){
+//On press of BackSpace reset position of plane
+restart = keyboard_check(vk_backspace);
+if (restart){
   y = obj_ground.y - obj_ground.sprite_height ;
   x = 60;
   gravity = 0;
   speed = 0;
   direction =0;
+  image_yscale = abs(image_yscale) ;
 }
-   
-//controllo se è sulla pista di atterraggio ....
-if  place_meeting(x,y+vspeed,obj_runway)
-  {
-  global.runway = true;
-  } 
-    
-/// Gravity check 
-//if (place_meeting(x+hspeed -10,y - 10 ,obj_ground) || place_meeting(x -10,y+vspeed -10,obj_ground))
+// Check if the plane over the upper limit of the room about 100px he go on STALL
+if (room_height - y &gt; room_height +100){
+  isplanestall = true;
+  speed = 0;
+}else{
+  isplanestall = false;
+} 
+
+// Check for plane outside the borders of the room
+if x  &gt; room_width + sprite_width || x  &lt; 0-sprite_width{
+//X borders bounce on opposite direction
+  direction = 180 - direction;
+}
+// Take care of the flip of image based on the direction
+if (direction &gt;= 90 &amp;&amp; direction &lt;= 270){
+  image_yscale = -1 * standardallignsprite;
+}else{
+  image_yscale = standardallignsprite;
+}
+  
+/// Check Collision on ground and if touch the landing runway
 if  place_meeting(x,y+vspeed -10,obj_ground){
-  //if ((direction &gt;= 20 || direction &lt;= 345) &amp;&amp; speed &gt; 0.5 &amp;&amp; !(global.runway)){
-  if (!global.runway){
-    global.isplanelanded =  false;
-    global.isplanecrashed =  true;
-  }else{
+  if  place_meeting(x,y+vspeed,obj_runway){
     y = obj_ground.y - obj_ground.sprite_height ;
-    global.isplanelanded =  true;
-    global.isplanecrashed =  false;
+    isplanelanded =  true;
+    isplanecrashed =  false;
+  }else{
+    isplanelanded =  false;
+    isplanecrashed =  true;
   }
   gravity = 0;
   speed = 0;
   direction =0;
 }else{
-  if !(global.isplanelanded)
+  if !(isplanelanded)
   {
-    gravity = 0.12;
+    if speed &gt; speedplanemax{
+      speed = speedplanemax;
+      gravity = 0;
+    }else if speed &gt; speedplanemax / 2 {
+      gravity = 0.005;
+    }else{
+      gravity = 0.1;
+    }
   }
 }
 /// Execute Script movement plane object
-if !(global.isplanecrashed){
+if !(isplanecrashed){
   scr_moveplane();
 }else{
   sprite_index = sp_fokkercrash;
   image_speed = 0.2;
   if (image_index &gt;= image_number - 1) 
     image_speed = 0;
-/// Execute just once animation crashed
-  //sprite_index = sp_fokkercrash;
-  //image_speed = 0.3
 }
 // Update Object Text with values after movement of plane
 global.speedtxt = speed;
@@ -108,7 +159,7 @@ global.altitudetxt = room_height - y;
             <string>//Draw self based on Sprite
 draw_self()
 //Crash animation
-if (global.isplanecrashed){
+//if (global.isplanecrashed){
   //sprite_index = sp_fokkercrash;
   //if(image_index&gt;=sprite_get_number(sprite_index)){//Animation Over
     //sprite_index=_spr_default//Go back to default sprite
@@ -116,7 +167,7 @@ if (global.isplanecrashed){
   //}else{
   //  image_speed = 0.3;
  // }
-}
+//}
 //Draw Bounding Box around Object
 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 </string>
@@ -125,7 +176,7 @@ draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
       </action>
     </event>
   </events>
-  <PhysicsObject>0</PhysicsObject>
+  <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
@@ -136,5 +187,10 @@ draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>0,0</point>
+    <point>256,0</point>
+    <point>256,256</point>
+    <point>0,256</point>
+  </PhysicsShapePoints>
 </object>
