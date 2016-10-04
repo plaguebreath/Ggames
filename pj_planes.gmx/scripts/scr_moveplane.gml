@@ -17,10 +17,21 @@ if keyboard_check(vk_anykey)
     //{
     //  obj_plane.speed += speedfactorinc;
     //}
-    if (obj_plane.speed + facceleration < speedplanemax){ 
-      motion_add(obj_plane.direction, facceleration);
+    if (isplanelanded){
+      if (speed == 0){
+        enginestarted = true;
+      }
+      if (speed <= 1) {
+        motion_add(obj_plane.direction, facceleration/10);
+      }else{ 
+        motion_add(obj_plane.direction, facceleration/2);
+      }        
     }else{
-      obj_plane.speed = speedplanemax;
+      if (obj_plane.speed + facceleration < speedplanemax){ 
+        motion_add(obj_plane.direction, facceleration);
+      }else{
+        obj_plane.speed = speedplanemax;
+      }
     }
   }
   if (left){
@@ -28,10 +39,14 @@ if keyboard_check(vk_anykey)
     //{
     //  obj_plane.speed -= speedfactorinc;
     //}
-    if (obj_plane.speed > 1) motion_add(obj_plane.direction, -1 * (facceleration / 2))
+    if (isplanelanded){ 
+      if (obj_plane.speed <= takeoffspeed && obj_plane.speed - facceleration > 0) motion_add(obj_plane.direction, -1 * (facceleration))
+    }else{
+      if (obj_plane.speed > 1) motion_add(obj_plane.direction, -1 * (facceleration / 2))
+    }
   }
   if (up){ 
-    if (isplanelanded){
+    if (isplanelanded){    
       if (obj_plane.speed > takeoffspeed)
       {
         obj_plane.direction += turnfactor ;
@@ -56,6 +71,9 @@ if keyboard_check(vk_anykey)
         image_angle =  direction;
         speed = bulletspeed;
         obj_plane.bullets -= 1;   
+        if !audio_is_playing(snd_mg){
+          audio_play_sound(snd_mg,5,false);
+        }
       }     
     timeInitmg = timeCurrentmg; // update the time to compare to
     }
@@ -64,7 +82,7 @@ if keyboard_check(vk_anykey)
   if (firebomb && !isplanelanded && obj_plane.bombs > 0) {
     timeCurrentbomb = current_time; 
     if (timeCurrentbomb - timeInitbomb >= fireintervalbomb) { 
-      //with (instance_create(x+lengthdir_x(offsetlenbomb,direction),y+lengthdir_y(offsetlenbomb,direction) , obj_bomb)) {    
+      //with (instance_create(x+lengthdir_x(offsetlenbomb,direction),y+lengthdir_y(offsetlenbomb,direction) , obj_bomb)) {         
       with (instance_create(x+lengthdir_x(offsetlenbomb,direction),y+lengthdir_y(offsetlenbomb,direction) +25 , obj_bomb)) {
         direction = obj_plane.direction;
         image_angle =  direction;       

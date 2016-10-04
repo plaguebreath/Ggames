@@ -32,12 +32,13 @@ isplanecrashed = false;
 isplanestall = false;
 speedplanemax = 10;
 turnfactor = 2;
-takeoffspeed = 5;
+takeoffspeed = 4;
 facceleration = 0.10;
+enginestarted = false;
 
 timeInitmg = current_time;
 timeCurrentmg = current_time;
-fireintervalmg = 40; // interval between fire in milliseconds
+fireintervalmg = 200; // interval between fire in milliseconds
 offsetlenmg = 32;  // posizione asse x
 
 timeInitbomb = current_time;
@@ -82,10 +83,14 @@ if (restart){
   speed = 0;
   direction =0;
   image_yscale = abs(image_yscale) ;
+  enginestarted = false
+  audio_sound_gain(snd_enginestart,0,0.5);  
+  audio_sound_gain(snd_engine1,0,0.5);              
 }
 // Check if the plane over the upper limit of the room about 200px he go on STALL
 if (room_height - y &gt; room_height + 200){
   isplanestall = true;
+  direction = 270;
   speed = 0;
 }else{
   isplanestall = false;
@@ -116,19 +121,21 @@ if  place_meeting(x,y+vspeed -10,obj_ground){
   gravity = 0;
   speed = 0;
   direction =0;
+  //enginestarted = false;
 }else{
   if !(isplanelanded)
   {
     if speed &gt; speedplanemax{
       speed = speedplanemax;
       gravity = 0;
-    }else if speed &gt; speedplanemax / 2 {
+    }else if speed &gt; speedplanemax / 3 {
       gravity = 0.005;
     }else{
-      gravity = 0.1;
+      gravity = 0.35;
     }
   }
 }
+
 /// Execute Script movement plane object
 if !(isplanecrashed){
   scr_moveplane();
@@ -138,6 +145,26 @@ if !(isplanecrashed){
   if (image_index &gt;= image_number - 1) 
     image_speed = 0;
 }
+
+if (enginestarted){
+     //if !audio_is_playing(snd_enginestart){
+         audio_play_sound(snd_enginestart,1,false); 
+         audio_sound_gain(snd_enginestart,1,0.5);  
+         audio_play_sound(snd_engine1,0,true);
+         audio_sound_gain(snd_engine1,0,0.5);              
+         enginestarted = false; 
+     //}   
+}
+if (speed &gt;1){
+  //audio_sound_gain(snd_enginestart,0,0.5); 
+  audio_sound_gain(snd_engine1,1,0.5);     
+  audio_sound_pitch(snd_engine1, speed * 10 / 80); 
+}
+//if (speed &gt;=4){
+  //audio_sound_gain(snd_enginestart,0,0.5); 
+  //audio_sound_gain(snd_engine1,1,1.5);      
+//}
+
 // Update Object Text with values after movement of plane
 global.speedtxt = speed;
 global.angletxt = direction;
