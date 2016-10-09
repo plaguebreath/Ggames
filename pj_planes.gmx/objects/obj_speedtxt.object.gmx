@@ -27,16 +27,20 @@
             <kind>1</kind>
             <string>draw_set_font(Main_Font)
 //draw_text(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(global.speedtxt) )
-draw_text_colour(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(global.speedtxt),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 40,"Direction = " + string(global.angletxt),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 60,"Altitude = " + string(global.altitudetxt),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 80,"Landed = " + string(obj_plane.isplanelanded),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 100,"Bullets = " + string(obj_plane.bullets),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 120,"Bombs = " + string(obj_plane.bombs),c_blue,c_blue,c_black,c_black,1 );
-//draw_text_colour(view_xview[0]+20, view_yview[0] + 100,"sprite yallign = " + string(obj_plane.image_yscale),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(obj_playerplane.speed),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 40,"Direction = " + string(obj_playerplane.direction),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 60,"Altitude = " + string(obj_playerplane.altitude),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 80,"Bullets = " + string(obj_playerplane.bullets),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 100,"Bombs = " + string(obj_playerplane.bombs),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 120,"Reloading = " + string(obj_playerplane.isreloading),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 140,"Onrunway = " + string(obj_playerplane.isplaneonrunway),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 160,"Takeoff = " + string(obj_playerplane.isplanetakeoff),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 180,"Landed = " + string(obj_playerplane.isplanelanded),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 200,"Stall = " + string(obj_playerplane.isplanestall),c_blue,c_blue,c_black,c_black,1 );
+//draw_text_colour(view_xview[0]+20, view_yview[0] + 220,"TimeStall = " + string(obj_playerplane.timeCurrentstall) + " " + string(obj_playerplane.timeInitstall),c_blue,c_blue,c_black,c_black,1 );
 
-if obj_plane.isplanestall {
-  draw_text_colour(view_xview[0]+400, view_yview[0] + 20,"STALL",c_blue,c_blue,c_black,c_black,1 );
+if obj_playerplane.isplanestall {
+  //draw_text_colour(view_xview[0]+400, view_yview[0] + 20,"STALL",c_blue,c_blue,c_black,c_black,1 );
 }
 </string>
           </argument>

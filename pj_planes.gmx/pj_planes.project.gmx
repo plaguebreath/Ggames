@@ -10,6 +10,8 @@
     <sound>sound\snd_enginestart</sound>
     <sound>sound\snd_engine0</sound>
     <sound>sound\snd_engine1</sound>
+    <sound>sound\snd_expplane</sound>
+    <sound>sound\snd_bomb</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_runway</sprite>
@@ -29,6 +31,16 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_moveplane.gml</script>
+    <script>scripts\scr_restart.gml</script>
+    <script>scripts\scr_planesound.gml</script>
+    <script>scripts\scr_mgfire.gml</script>
+    <script>scripts\scr_bomb.gml</script>
+    <script>scripts\scr_borderandflip.gml</script>
+    <script>scripts\scr_movelogic.gml</script>
+    <script>scripts\scr_refuel.gml</script>
+    <script>scripts\scr_isplanelanded.gml</script>
+    <script>scripts\scr_planesetonrunway.gml</script>
+    <script>scripts\scr_planestall.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\Main_Font</font>
@@ -36,7 +48,7 @@
   <objects name="objects">
     <object>objects\obj_ground</object>
     <object>objects\obj_runway</object>
-    <object>objects\obj_plane</object>
+    <object>objects\obj_playerplane</object>
     <object>objects\obj_speedtxt</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_bomb</object>
