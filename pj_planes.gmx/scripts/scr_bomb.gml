@@ -11,7 +11,7 @@
         image_angle =  direction;       
         speed = objid.speed; 
         objid.bombs -= 1;   
-      }     
+    }     
     timeInitbomb = timeCurrentbomb; // update the time to compare to
     }
   }

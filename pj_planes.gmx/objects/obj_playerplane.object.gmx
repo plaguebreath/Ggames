@@ -85,11 +85,10 @@ gravityplane = 0.20;
 restart = false;
 
 soundexplosionplayed=0;
-
-//audio_stop_sound(snd_enginestart);  
-//audio_stop_sound(snd_engine1);   
   
 em_player =  audio_emitter_create();
+
+audio_listener_orientation(x, y, 1000, 0, 0, 1);
 </string>
           </argument>
         </arguments>
@@ -113,6 +112,39 @@ em_player =  audio_emitter_create();
           <argument>
             <kind>1</kind>
             <string>audio_emitter_free(em_player);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>view_xview = ((x -view_wview/2)+view_xview*9)/10 + hspeed
+view_yview = ((y -view_hview/2)+view_yview*9)/10 + vspeed
+
+if view_xview &lt; 0
+    view_xview = 0
+if view_yview &lt; 0
+    view_yview = 0
+if view_xview &gt; room_width-view_wview
+    view_xview = room_width-view_wview
+if view_yview &gt; room_height-view_hview
+    view_yview = room_height-view_hview
 </string>
           </argument>
         </arguments>
@@ -171,7 +203,7 @@ if (restart){
       image_speed = 0.2;
       if (image_index &gt;= image_number - 1) image_speed = 0;
       // Process sounds of crash
-      scr_planesound(id,3);    
+      scr_planesound(id,2);    
     }else{
       sprite_index = sp_fokker;
     }    

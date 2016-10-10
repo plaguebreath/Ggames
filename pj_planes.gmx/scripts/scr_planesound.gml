@@ -6,8 +6,7 @@
 
  //enginesound = 0
  //mgsound = 1
- //bombsound = 2
- //explosion = 3
+ //explosion = 2
  
  with (idplane){ 
    // setta posizione emettitore suono giocatore come la sua posizione
@@ -62,7 +61,7 @@
        }
        break; 
        
-    case 3:
+    case 2:
        if audio_is_playing(snd_engine1)  audio_stop_sound(snd_engine1);
        if (soundexplosionplayed == 0){
          audio_play_sound_on(em_player, snd_expplane, false, 1); 

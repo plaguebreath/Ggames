@@ -2,7 +2,7 @@
  idplane = argument0;
    
  // Check for plane outside the borders of the room
- if idplane.x  > room_width + idplane.sprite_width || idplane.x  < 0-idplane.sprite_width{
+ if idplane.x  > room_width + idplane.sprite_width || idplane.x  < -1 * idplane.sprite_width{
    //X borders bounce on opposite direction
    idplane.direction = 180 - idplane.direction;
    isflipped = !isflipped;

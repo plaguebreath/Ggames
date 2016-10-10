@@ -12,6 +12,9 @@
     <sound>sound\snd_engine1</sound>
     <sound>sound\snd_expplane</sound>
     <sound>sound\snd_bomb</sound>
+    <sound>sound\snd_bombexp</sound>
+    <sound>sound\snd_reloadmg</sound>
+    <sound>sound\snd_reloadbomb</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_runway</sprite>
@@ -22,6 +25,7 @@
     <sprite>sprites\sp_fokkercrash</sprite>
     <sprite>sprites\sp_bullet</sprite>
     <sprite>sprites\sp_bomb</sprite>
+    <sprite>sprites\sp_bombexp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_back</background>

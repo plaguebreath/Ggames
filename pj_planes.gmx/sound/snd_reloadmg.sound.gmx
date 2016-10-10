@@ -2,7 +2,7 @@
 <sound>
   <kind>0</kind>
   <extension>.wav</extension>
-  <origname>sound\audio\snd_bomb.wav</origname>
+  <origname>sound\audio\snd_reloadmg.wav</origname>
   <effects>0</effects>
   <volume>
     <volume>1</volume>
@@ -26,7 +26,7 @@
     <bitDepth>16</bitDepth>
   </bitDepths>
   <preload>-1</preload>
-  <data>snd_bomb.wav</data>
+  <data>snd_reloadmg.wav</data>
   <compressed>0</compressed>
   <streamed>0</streamed>
   <uncompressOnLoad>0</uncompressOnLoad>
