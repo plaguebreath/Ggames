@@ -8,6 +8,7 @@
  //mgsound = 1
  //explosion = 2
  
+ if (global.audiosfx ==1){
  with (idplane){ 
    // setta posizione emettitore suono giocatore come la sua posizione
    audio_emitter_position(em_player, x, y, 0); 
@@ -70,4 +71,5 @@
        break;     
      }
    } 
+ }
  }

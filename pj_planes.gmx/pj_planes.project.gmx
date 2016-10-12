@@ -26,6 +26,7 @@
     <sprite>sprites\sp_bullet</sprite>
     <sprite>sprites\sp_bomb</sprite>
     <sprite>sprites\sp_bombexp</sprite>
+    <sprite>sprites\spritet</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_back</background>
@@ -56,6 +57,7 @@
     <object>objects\obj_speedtxt</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_bomb</object>
+    <object>objects\objectgui</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>

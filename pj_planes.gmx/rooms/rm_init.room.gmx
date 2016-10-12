@@ -20,7 +20,15 @@ global.soundvolume = 0.2;
 global.mouseenabled = false;
 
 global.mouseoldx = 0;
-global.mouseoldy = 0;</code>
+global.mouseoldy = 0;
+
+global.audiosfx = 0;
+
+switch (os_type)
+   {
+   case os_windows: global.Config = 0; break;
+   case os_android: global.Config = 1; break;   
+   }</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>scr_restart(0);</code>
+  <code>scr_restart(0);
+
+instance_create(x, y, objectgui);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
