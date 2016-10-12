@@ -37,9 +37,18 @@ draw_text_colour(view_xview[0]+20, view_yview[0] + 140,"Onrunway = " + string(ob
 draw_text_colour(view_xview[0]+20, view_yview[0] + 160,"Takeoff = " + string(obj_playerplane.isplanetakeoff),c_blue,c_blue,c_black,c_black,1 );
 draw_text_colour(view_xview[0]+20, view_yview[0] + 180,"Landed = " + string(obj_playerplane.isplanelanded),c_blue,c_blue,c_black,c_black,1 );
 draw_text_colour(view_xview[0]+20, view_yview[0] + 200,"Stall = " + string(obj_playerplane.isplanestall),c_blue,c_blue,c_black,c_black,1 );
-//draw_text_colour(view_xview[0]+20, view_yview[0] + 220,"TimeStall = " + string(obj_playerplane.timeCurrentstall) + " " + string(obj_playerplane.timeInitstall),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 220,"Mouseenabled = " + string(global.mouseenabled) ,c_blue,c_blue,c_black,c_black,1 );
 //draw_text_colour(view_xview[0]+20, view_yview[0] + 220,"Coord = " + string(view_xview) + " " + string(view_yview),c_blue,c_blue,c_black,c_black,1) ;
 
+if (global.mouseenabled){
+   currentAngle = obj_playerplane.direction;
+  desiredAngle = point_direction(obj_playerplane.x,obj_playerplane.y,mouse_x,mouse_y);
+  var dd = angle_difference(currentAngle, desiredAngle);
+  
+  draw_text_colour(view_xview[0]+20, view_yview[0] + 240,"cangle = " + string(currentAngle) + " dangle = " + string(desiredAngle) + " da = " + string(dd) + " flipped = " + string(obj_playerplane.isflipped) ,c_blue,c_blue,c_black,c_black,1 );
+
+}
+  
 if obj_playerplane.isplanestall {
   //draw_text_colour(view_xview[0]+400, view_yview[0] + 20,"STALL",c_blue,c_blue,c_black,c_black,1 );
 }

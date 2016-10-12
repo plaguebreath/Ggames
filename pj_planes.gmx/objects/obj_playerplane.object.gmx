@@ -61,12 +61,13 @@ timeCurrentbomb = current_time;
 fireintervalbomb = 1000; // interval between fire in milliseconds
 offsetlenbomb = -5;  // posizione asse x
 
-timebeforereloadbullets = 500;
+timebeforereloadbullets = 250;
 timeInitbullets = current_time;
 timeCurrentbullets = current_time;
 MAX_bullets = 1000;
 bullets = MAX_bullets;
-timebeforereloadbombs = 1000;
+
+timebeforereloadbombs = 500;
 timeInitbombs = current_time;
 timeCurrentbombs = current_time;
 MAX_bombs = 10;
@@ -74,7 +75,7 @@ bombs = MAX_bombs;
 
 timeCurrentlanded = current_time; 
 timeInitlanded  = current_time; 
-timeonrunway = 4000;
+timeonrunway = 3000;
 
 timeCurrentstall = current_time; 
 timeInitstall = current_time; 
@@ -168,8 +169,9 @@ if view_yview &gt; room_height-view_hview
           <argument>
             <kind>1</kind>
             <string>image_speed = 1;
-turnvalue = 0;
-fvalue = 0;
+var turnvalue = 0;
+var fvalue = 0;
+var stallroomlimit = 100;
 
 if (restart){
   scr_restart(id);
@@ -189,7 +191,7 @@ if (restart){
       if  place_meeting(x,y+vspeed -10,obj_ground){
         isplanecrashed = true;
       }else{
-        if (room_height - y &gt; room_height + 200){
+        if (room_height - y &gt; room_height + stallroomlimit){
           isplanestall = true;
           direction = 270;
           speed = 0;  
