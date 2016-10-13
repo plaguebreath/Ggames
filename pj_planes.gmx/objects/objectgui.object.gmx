@@ -47,15 +47,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var base_w = 800;
+            <string>// new learned from here 
+// https://docs.yoyogames.com/source/dadiospice/002_reference/surfaces/application_get_position.html
+
+var base_w = 800;
 var base_h = 600;
+
+var a = application_get_position();
+xx = a[0];
+yy = a[1];
+www = a[2] - a[0];
+hhh = a[3] - a[1];
+
+show_debug_message(www)
+show_debug_message(hhh)
 
 if window_get_fullscreen(){
   widthvisible = display_get_width();
   heightvisible = display_get_height();
 }else{
-  widthvisible = view_wport[0];
-  heightvisible = view_hport[0];
+  widthvisible = www;
+  heightvisible = hhh;
 }
 
 var aspect = widthvisible / heightvisible;
@@ -76,12 +88,16 @@ else
     }
     
     
-show_debug_message(widthvisible)
+
 // An example of how you would then draw this to the GUI layer... 
-draw_sprite(spritet, 0, 64, 64);
-draw_sprite(spritet, 0, ww - 64, 64);
-draw_sprite(spritet, 0, ww - 64, hh - 64);
-draw_sprite(spritet, 0, 64, hh - 64);
+draw_sprite(spritet, 0, 32, 32);
+draw_sprite(spritet, 0, ww - 32, 32);
+draw_sprite(spritet, 0, ww - 32, hh - 32);
+draw_sprite(spritet, 0, 32, hh - 32);
+
+global.RightV = virtual_key_add(32, hh - 32,spritet.sprite_width, spritet.sprite_height,vk_right)
+
+
 </string>
           </argument>
         </arguments>

@@ -24,6 +24,8 @@ global.mouseoldy = 0;
 
 global.audiosfx = 0;
 
+global.RightV = 0;
+
 switch (os_type)
    {
    case os_windows: global.Config = 0; break;
