@@ -16,7 +16,7 @@ firebomb = keyboard_check(vk_ralt);
 
 /// Movement check
 if (!idplane.isplanecrashed && !idplane.isreloading && !idplane.isplanestall){
-if keyboard_check(vk_anykey){   
+if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){   
   if (right){ 
     if (idplane.isplaneonrunway){
       if (idplane.speed == 0){

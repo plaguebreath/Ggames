@@ -57,7 +57,8 @@
     <object>objects\obj_speedtxt</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_bomb</object>
-    <object>objects\objectgui</object>
+    <object>objects\obj_gui</object>
+    <object>objects\obj_checkwindow</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>

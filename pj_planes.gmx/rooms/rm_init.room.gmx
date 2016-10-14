@@ -24,7 +24,13 @@ global.mouseoldy = 0;
 
 global.audiosfx = 0;
 
-global.RightV = 0;
+global.screenorientation = -1;
+global.isfullscreen = false;
+global.ww = 0;
+global.hh = 0;
+
+global.Right = 0;
+global.Left = 0;
 
 switch (os_type)
    {

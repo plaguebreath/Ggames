@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -25,12 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>oldisfullscreen = -1;
+oldscreenorientation = -1;
+
+</string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -47,57 +50,57 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// new learned from here 
+            <string>//check res
+
+// new learned from here 
 // https://docs.yoyogames.com/source/dadiospice/002_reference/surfaces/application_get_position.html
 
-var base_w = 800;
-var base_h = 600;
-
+global.screenorientation = display_get_orientation();
 var a = application_get_position();
 xx = a[0];
 yy = a[1];
 www = a[2] - a[0];
 hhh = a[3] - a[1];
 
-show_debug_message(www)
-show_debug_message(hhh)
+var base_w = 800;
+var base_h = 600;
+
+//show_debug_message(www)
+//show_debug_message(hhh)
 
 if window_get_fullscreen(){
   widthvisible = display_get_width();
   heightvisible = display_get_height();
+  global.isfullscreen = true;
 }else{
   widthvisible = www;
   heightvisible = hhh;
+  global.isfullscreen = false;
 }
 
+//if (oldisfullscreen != global.isfullscreen ){
 var aspect = widthvisible / heightvisible;
 
-if (aspect &gt; 1)
-    {
+if (aspect &gt; 1){
     //landscape
-    ww = base_h * aspect;
-    hh = base_h;
-    display_set_gui_maximise((widthvisible / ww), (heightvisible / hh), 0, 0);
-    }
-else
-    {
+    global.ww = base_h * aspect;
+    global.hh = base_h;
+    display_set_gui_maximise((widthvisible / global.ww), (heightvisible / global.hh), 0, 0);
+}else{
     //portrait
-    ww = base_w;
-    hh = base_w / aspect;
-    display_set_gui_maximise((widthvisible / ww), (heightvisible / hh), 0, 0);
-    }
+    global.ww = base_w;
+    global.hh = base_w / aspect;
+    display_set_gui_maximise((widthvisible / global.ww), (heightvisible / global.hh), 0, 0);
+}
     
-    
+with (obj_gui){
+  instance_destroy();
+}
 
-// An example of how you would then draw this to the GUI layer... 
-draw_sprite(spritet, 0, 32, 32);
-draw_sprite(spritet, 0, ww - 32, 32);
-draw_sprite(spritet, 0, ww - 32, hh - 32);
-draw_sprite(spritet, 0, 32, hh - 32);
-
-global.RightV = virtual_key_add(32, hh - 32,spritet.sprite_width, spritet.sprite_height,vk_right)
-
-
+instance_create(x, y, obj_gui);
+//oldisfullscreen = global.isfullscreen;
+//oldscreenorientation = global.screenorientation;
+//}  
 </string>
           </argument>
         </arguments>
