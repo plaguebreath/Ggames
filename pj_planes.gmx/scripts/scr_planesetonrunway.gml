@@ -1,7 +1,9 @@
 var objid;
 objid = argument0;
  
-with (objid){ 
+with (objid){
+  //if (isflipped) image_angle = -1*image_angle 
+  image_yscale = standardallignsprite;
   direction = 0;
   y = obj_runway.y - (sprite_height*image_yscale) + 10;
   x = obj_runway.x + 30;

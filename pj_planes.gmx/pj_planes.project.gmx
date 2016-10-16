@@ -26,11 +26,11 @@
     <sprite>sprites\sp_bullet</sprite>
     <sprite>sprites\sp_bomb</sprite>
     <sprite>sprites\sp_bombexp</sprite>
-    <sprite>sprites\spritet</sprite>
+    <sprite>sprites\spritet2</sprite>
+    <sprite>sprites\spritemg</sprite>
+    <sprite>sprites\spritebomb</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\bg_back</background>
-    <background>background\bg_ground</background>
     <background>background\bg_wartime</background>
   </backgrounds>
   <paths name="paths"/>
@@ -46,6 +46,7 @@
     <script>scripts\scr_isplanelanded.gml</script>
     <script>scripts\scr_planesetonrunway.gml</script>
     <script>scripts\scr_planestall.gml</script>
+    <script>scripts\scr_fliponflight.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\Main_Font</font>

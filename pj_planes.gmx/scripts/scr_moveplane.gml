@@ -4,12 +4,12 @@ idplane = argument0;
 idplane.turnvalue = 0;
 
 /// Local Variables
-right = keyboard_check(ord('D'));
-left =  keyboard_check(ord('A'));
-up = keyboard_check(ord('W'));
-down = keyboard_check(ord('S'));
-firemg = keyboard_check(vk_space);
-firebomb = keyboard_check(vk_ralt);
+right = keyboard_check(ord('D')); 
+left =  keyboard_check(ord('A')); 
+up = keyboard_check(ord('W'));    
+down = keyboard_check(ord('S'));  
+firemg = keyboard_check(vk_space);  
+firebomb = keyboard_check(vk_ralt);  
 
 //idplane.sprite_index = sp_fokker;
 //obj_plane.image_index = 0;
@@ -73,7 +73,7 @@ if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){
       } 
     }else{
       //idplane.direction += idplane.turnfactor ; 
-       if (!isflipped){
+       if (!idplane.isflipped){
           idplane.turnvalue = idplane.turnfactor;  
         }else{
           idplane.turnvalue = -1 * idplane.turnfactor;  
@@ -81,21 +81,23 @@ if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){
     }   
     idplane.sprite_index = sp_fokkerup;
   }else if (down && !idplane.isplaneonrunway){ 
-      if (!isflipped){
+      if (!idplane.isflipped){
           idplane.turnvalue = -1 *idplane.turnfactor;  
         }else{
           idplane.turnvalue =  idplane.turnfactor;  
         }     
     //idplane.direction -= idplane.turnfactor ;
      idplane.sprite_index = sp_fokkerdown;
-  }
+   }
    
   if (firemg && !idplane.isplaneonrunway && idplane.bullets > 0) {
     scr_mgfire(idplane);   
   }
   
   if (firebomb && !idplane.isplaneonrunway && idplane.bombs > 0) {
-    scr_bomb(idplane);
+    if (!idplane.isflipped && (idplane.direction <=90 || idplane.direction >270)) || (idplane.isflipped && (idplane.direction >90 && idplane.direction <=270)) {
+      scr_bomb(idplane);
+    }
   }
   
   if keyboard_check_pressed(ord('M')){
@@ -116,12 +118,13 @@ if (global.mouseenabled){
   desiredAngle = point_direction(idplane.x,idplane.y,mouse_x,mouse_y);
   var dangle = angle_difference(currentAngle, desiredAngle);
   //show_debug_message(dd);
-  var dmouse = 0; // up
+  var dmouse = 0; // no move
   
     if (dangle > 10 || dangle < -10) {
-    if (dangle > 0) dmouse = 1; // turn down
-   
-    if (dmouse == 0){
+    if (dangle > 0) dmouse = -1; // turn down
+    if (dangle < 0) dmouse = 1; // turn up
+    if (dmouse == 1){
+      up = true
       //turn up
       if (idplane.isplaneonrunway){    
         if (idplane.speed >= idplane.takeoffspeed)
@@ -139,10 +142,11 @@ if (global.mouseenabled){
         }      
       }   
     idplane.sprite_index = sp_fokkerup;
-    }else{
+    }else if (dmouse == -1){
+      down = true;
       //turn down
       if (!idplane.isplaneonrunway){ 
-        if (!isflipped){
+        if (!idplane.isflipped){
           idplane.turnvalue = -1 *idplane.turnfactor;  
         }else{
           idplane.turnvalue =  idplane.turnfactor;  
@@ -152,8 +156,15 @@ if (global.mouseenabled){
       }
     }
   }
-
 }
+
+//if ((!up && idplane.oldbuttonpressed != 3) && (!down && idplane.oldbuttonpressed != 4)) scr_fliponflight(idplane);
+if (idplane.turnvalue == 0 && idplane.oldturnvalue == idplane.turnvalue){
+scr_fliponflight(idplane,0); // l'aereo è stazionario controlla il flip
+}else if (idplane.turnvalue != 0){
+scr_fliponflight(idplane,1); // aggiorna il timer ma non controlare il flip
+}
+idplane.oldturnvalue = idplane.turnvalue;
 }
 //}
 

@@ -22,15 +22,12 @@ global.mouseenabled = false;
 global.mouseoldx = 0;
 global.mouseoldy = 0;
 
-global.audiosfx = 0;
+global.audiosfx = 1;
 
-global.screenorientation = -1;
-global.isfullscreen = false;
+//global.screenorientation = -1;
+
 global.ww = 0;
 global.hh = 0;
-
-global.Right = 0;
-global.Left = 0;
 
 switch (os_type)
    {

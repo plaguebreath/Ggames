@@ -25,13 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//rr = virtual_key_add(32, global.hh - 32,sprite_get_width(spritet), sprite_get_height(spritet),ord("D"))
-//virtual_key_add(32, hh - 32,spritet.sprite_width, spritet.sprite_height,vk_right)
+            <string>
+hsprite = sprite_get_height(spritet2);
+wsprite = sprite_get_width(spritet2);
 
 //virtual_key_add(32,32,32, 32,vk_right)
- rr = virtual_key_add(32, global.hh - sprite_get_height(spritet) - 32,sprite_get_width(spritet), sprite_get_height(spritet),ord("D"))
+rr = virtual_key_add(16 + wsprite, global.hh - 5 - hsprite * 2 - hsprite/2 ,wsprite, hsprite,ord("D"));
+ll = virtual_key_add(8 , global.hh - 5 - hsprite * 2 - hsprite/2 ,wsprite, hsprite,ord("A"));
+uu = virtual_key_add(12 + wsprite/2  , global.hh  - hsprite*3 - hsprite/2 - 10,wsprite, hsprite,ord("W"));
+dd = virtual_key_add(12 + wsprite/2  , global.hh  - hsprite - hsprite/2,wsprite, hsprite,ord("S"));
 
-//firstcheck = true;
+mg = virtual_key_add(global.ww -12 -wsprite, global.hh  - hsprite - hsprite/2,wsprite, hsprite,vk_space);
+bb = virtual_key_add(global.ww -12 -wsprite, global.hh  - hsprite*2 - hsprite/2 -5,wsprite, hsprite,vk_ralt);
+
 
 </string>
           </argument>
@@ -55,7 +61,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>virtual_key_delete(rr)
+            <string>virtual_key_delete(rr);
+virtual_key_delete(ll);
+virtual_key_delete(uu);
+virtual_key_delete(dd);
+virtual_key_delete(mg);
+virtual_key_delete(bb);
 </string>
           </argument>
         </arguments>
@@ -78,53 +89,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-//if (firstcheck){
-//   firstcheck = false;
-//}
-// if (isfullscreen != oldisfullscreen){
-//   virtual_key_delete(rr)
-//   rr = virtual_key_add(32, hh - 32,sprite_get_width(spritet), sprite_get_height(spritet),ord("D"))
-// } 
-//}
-    
-
-//draw_rectangle(32 - sprite_get_width(spritet)/2, global.hh - 32 + sprite_get_height(spritet)/2, 32+ sprite_get_width(spritet), sprite_get_height(spritet), true);
-
-// An example of how you would then draw this to the GUI layer... 
-//draw_sprite(spritet, 0, 32, 32);
-//draw_sprite(spritet, 0, global.ww - 32, 32);
-//draw_sprite(spritet, 0, global.ww - 32, global.hh - 32);
-draw_sprite(spritet, 0, 32, global.hh - 32);
-//draw_rectangle(32, global.hh - 32,sprite_get_width(spritet), sprite_get_height(spritet),true)
-draw_rectangle(32, global.hh -32 ,32 + sprite_get_width(spritet),global.hh -sprite_get_height(spritet), true);
+            <string>draw_sprite_ext(spritet2, 0, 16 + wsprite +  wsprite/2, global.hh - 5 - hsprite * 2, 1, 1, 0, c_white, 0.5 );
+draw_sprite_ext(spritet2, 0, 8 + wsprite/2, global.hh - 5 - hsprite * 2, 1, 1, 180, c_white, 0.5 );
+draw_sprite_ext(spritet2, 0, 12 + wsprite  , global.hh  -hsprite*3 - 10, 1, 1, 90, c_white, 0.5 );
+draw_sprite_ext(spritet2, 0, 12 + wsprite  , global.hh  - hsprite, 1, 1, 270, c_white, 0.5 );
+draw_sprite_ext(spritemg, 0, global.ww -12 -wsprite/2  , global.hh  -hsprite, 1, 1, 0, c_white, 0.5 );
+draw_sprite_ext(spritebomb, 0, global.ww -12 -wsprite/2  , global.hh  -hsprite*2 - 5, 1, 1, 0, c_white, 0.5 );
 
 
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//draw_rectangle(32,global.hh,32 + sprite_get_width(spritet), global.hh - sprite_get_height(spritet), true)
+//mg = virtual_key_add(12 - global.ww -  wsprite/2, global.hh  - hsprite - hsprite/2,wsprite, hsprite,vk_space)
 
 </string>
           </argument>

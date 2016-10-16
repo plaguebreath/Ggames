@@ -31,9 +31,6 @@ depth = -100;
 image_xscale = 0.35;
 image_yscale = 0.35;
 
-//Call reset position
-scr_planesetonrunway(id);
-
 //Instance variables
 standardallignsprite = image_yscale; 
 isreloading = false;
@@ -42,6 +39,7 @@ isplanelanded = true;
 isplaneonrunway = true;
 isplanecrashed = false;
 isplanestall = false;
+isflipped = false;
 speedplanemax = 10;
 turnfactor = 2;
 turnvalue = 0;
@@ -81,15 +79,25 @@ timeCurrentstall = current_time;
 timeInitstall = current_time; 
 timeforstall = 2000;
 
+timeCurrentflip = current_time; 
+timeInitflip = current_time; 
+timeforflip = 1000;
+
 gravityplane = 0.20;
 
 restart = false;
 
 soundexplosionplayed=0;
+
+oldturnvalue = 0;
   
 em_player =  audio_emitter_create();
 
 audio_listener_orientation(x, y, 1000, 0, 0, 1);
+
+//Call reset position
+scr_planesetonrunway(id);
+
 </string>
           </argument>
         </arguments>
@@ -171,7 +179,7 @@ if view_yview &gt; room_height-view_hview
             <string>image_speed = 1;
 var turnvalue = 0;
 var fvalue = 0;
-var stallroomlimit = 100;
+var stallroomlimity = 100;
 
 if (restart){
   scr_restart(id);
@@ -182,16 +190,16 @@ if (restart){
   }else{
      // Collisions check
     if  place_meeting(x,y + vspeed + 2 ,obj_runway){    
-      if (direction &gt;= 210 &amp;&amp; direction &lt;= 330){
-        isplanecrashed = true;
+      if (!isflipped &amp;&amp; (direction &gt;= 330 || direction &lt;= 30)) || (isflipped &amp;&amp; (direction &gt;= 150 &amp;&amp; direction &lt;= 210)) {
+        isplaneonrunway = true; 
       }else{
-        isplaneonrunway = true;
+       isplanecrashed = true;
       }            
     }else{
       if  place_meeting(x,y+vspeed -10,obj_ground){
         isplanecrashed = true;
       }else{
-        if (room_height - y &gt; room_height + stallroomlimit){
+        if (room_height - y &gt; room_height + stallroomlimity){
           isplanestall = true;
           direction = 270;
           speed = 0;  
@@ -214,22 +222,14 @@ if (restart){
     // if it's just landed then procede to reloading if needed
     if (isreloading) scr_refuel(id); 
     
-    if (isplanestall) {
-     // randomize();
-     // valorarotazione = 1;
-     // testroll = random_range(0, 1);
-     // if (testroll &lt; 0.5) valorarotazione = -1;
-     // image_yscale = valorarotazione * abs(image_yscale); 
-      scr_planestall(id);
-      //show_debug_message(valorarotazione);
-    }
-    
+    if (isplanestall) scr_planestall(id);
+     
     // Process Movements
     scr_moveplane(id);
     // Movement logic
     scr_movelogic(id);
     // Check for Border bump and orientation
-    scr_borderandflip(id);    
+    scr_borderandflip(id);       
     // Process sounds of engine
     scr_planesound(id,0);  
   }

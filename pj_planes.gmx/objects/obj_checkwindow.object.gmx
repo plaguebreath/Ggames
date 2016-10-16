@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>oldisfullscreen = -1;
-oldscreenorientation = -1;
-
+            <string>//oldisfullscreen = -1;
+ oldwidthvisible = -1;
+ oldheightvisible = -1;
+ oldisfullscreen = !window_get_fullscreen();
+ instance_create(x, y, obj_gui);
 </string>
           </argument>
         </arguments>
@@ -55,7 +57,7 @@ oldscreenorientation = -1;
 // new learned from here 
 // https://docs.yoyogames.com/source/dadiospice/002_reference/surfaces/application_get_position.html
 
-global.screenorientation = display_get_orientation();
+//global.screenorientation = display_get_orientation();
 var a = application_get_position();
 xx = a[0];
 yy = a[1];
@@ -71,11 +73,11 @@ var base_h = 600;
 if window_get_fullscreen(){
   widthvisible = display_get_width();
   heightvisible = display_get_height();
-  global.isfullscreen = true;
+  isfullscreen = true; 
 }else{
   widthvisible = www;
   heightvisible = hhh;
-  global.isfullscreen = false;
+  isfullscreen = false;
 }
 
 //if (oldisfullscreen != global.isfullscreen ){
@@ -92,12 +94,29 @@ if (aspect &gt; 1){
     global.hh = base_w / aspect;
     display_set_gui_maximise((widthvisible / global.ww), (heightvisible / global.hh), 0, 0);
 }
-    
-with (obj_gui){
-  instance_destroy();
+
+ischangedsize = false;
+if (oldisfullscreen != isfullscreen){
+  oldisfullscreen = isfullscreen
+  ischangedsize = true;
+}
+if (oldwidthvisible != widthvisible){
+  oldwidthvisible= widthvisible
+  ischangedsize = true;
+}
+if (oldheightvisible != heightvisible){
+  oldheightvisible= heightvisible
+  ischangedsize = true;
 }
 
+if (ischangedsize){
+if instance_exists(obj_gui){   
+  with (obj_gui){
+    instance_destroy();
+  }
+}
 instance_create(x, y, obj_gui);
+}
 //oldisfullscreen = global.isfullscreen;
 //oldscreenorientation = global.screenorientation;
 //}  
