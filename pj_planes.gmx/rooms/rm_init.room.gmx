@@ -13,9 +13,6 @@
   <code>// Declare standard color for drawing
 draw_set_colour(c_red);
 
-//Call the next room
-room_goto_next()
-
 global.soundvolume = 0.2;
 global.mouseenabled = false;
 
@@ -33,7 +30,10 @@ switch (os_type)
    {
    case os_windows: global.Config = 0; break;
    case os_android: global.Config = 1; break;   
-   }</code>
+   }
+   
+//Call the next room
+room_goto_next()</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

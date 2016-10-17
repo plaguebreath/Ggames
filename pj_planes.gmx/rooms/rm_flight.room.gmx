@@ -10,8 +10,9 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(x, y, obj_checkwindow);
-
+  <code>if (global.Config == 1){ //only if android launch the GUI interface
+  instance_create(x, y, obj_checkwindow);
+}
 scr_restart(0);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>0</clearViewBackground>

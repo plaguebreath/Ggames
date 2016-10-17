@@ -4,7 +4,7 @@ var olddirection;
 idplane = argument0;
 olddirection = idplane.direction;
 
-if !(idplane.isplanecrashed){
+if (!idplane.isplanecrashed){
     idplane.direction += idplane.turnvalue;
     //if (idplane.speed  + idplane.fvalue) < speedplanemax - 0.1 {
       if (idplane.speed + idplane.fvalue > 0){

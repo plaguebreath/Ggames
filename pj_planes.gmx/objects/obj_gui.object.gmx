@@ -61,12 +61,12 @@ bb = virtual_key_add(global.ww -12 -wsprite, global.hh  - hsprite*2 - hsprite/2 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>virtual_key_delete(rr);
-virtual_key_delete(ll);
-virtual_key_delete(uu);
-virtual_key_delete(dd);
-virtual_key_delete(mg);
-virtual_key_delete(bb);
+            <string>//virtual_key_delete(rr);
+//virtual_key_delete(ll);
+//virtual_key_delete(uu);
+//virtual_key_delete(dd);
+//virtual_key_delete(mg);
+//virtual_key_delete(bb);
 </string>
           </argument>
         </arguments>
