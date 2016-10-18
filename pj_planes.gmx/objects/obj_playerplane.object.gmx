@@ -62,7 +62,7 @@ offsetlenbomb = -5;  // posizione asse x
 timebeforereloadbullets = 250;
 timeInitbullets = current_time;
 timeCurrentbullets = current_time;
-MAX_bullets = 1000;
+MAX_bullets = 500;
 bullets = MAX_bullets;
 
 timebeforereloadbombs = 500;
@@ -177,9 +177,9 @@ if view_yview &gt; room_height-view_hview
           <argument>
             <kind>1</kind>
             <string>image_speed = 1;
-var turnvalue = 0;
-var fvalue = 0;
-var stallroomlimity = 100;
+//var turnvalue = 0;
+// var fvalue = 0;
+//var stallroomlimity = 100;
 
 if (restart){
   scr_restart(id);
@@ -209,10 +209,14 @@ if (restart){
       if  place_meeting(x,y+vspeed -10,obj_ground){
         isplanecrashed = true;
       }else{
-        if (room_height - y &gt; room_height + stallroomlimity){
+        if (room_height - y &gt; room_height + global.stallroomlimity){
           isplanestall = true;
           direction = 270;
           speed = 0;  
+        }
+        //aereo crashato
+        if (room_height - y &lt;= 0){
+          isplanecrashed = true;
         } 
         isplaneonrunway = false;
       }
@@ -246,7 +250,7 @@ if (restart){
 }
 
 // Update Values of variables
-altitude = room_height - (y + sprite_height * image_yscale);
+altitude = room_height - y  - 5 - (sprite_height*image_yscale) / 2 ;
 </string>
           </argument>
         </arguments>

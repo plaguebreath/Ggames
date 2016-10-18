@@ -4,12 +4,12 @@ idplane = argument0;
 idplane.turnvalue = 0;
 
 /// Local Variables
-right = keyboard_check(ord('D')); 
-left =  keyboard_check(ord('A')); 
-up = keyboard_check(ord('W'));    
-down = keyboard_check(ord('S'));  
-firemg = keyboard_check(vk_space);  
-firebomb = keyboard_check(vk_ralt);  
+var right = keyboard_check(ord('D')); 
+var left =  keyboard_check(ord('A')); 
+var up = keyboard_check(ord('W'));    
+var down = keyboard_check(ord('S'));  
+var firemg = keyboard_check(vk_space);  
+var firebomb = keyboard_check(vk_ralt);  
 
 //idplane.sprite_index = sp_fokker;
 //obj_plane.image_index = 0;

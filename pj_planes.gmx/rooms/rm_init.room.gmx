@@ -13,6 +13,7 @@
   <code>// Declare standard color for drawing
 draw_set_colour(c_red);
 
+global.stallroomlimity = 100;
 global.soundvolume = 0.2;
 global.mouseenabled = false;
 
