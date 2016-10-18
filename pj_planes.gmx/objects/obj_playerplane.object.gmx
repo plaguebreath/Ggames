@@ -32,6 +32,11 @@ image_xscale = 0.35;
 image_yscale = 0.35;
 
 //Instance variables
+timeInitjammed = current_time;
+timeCurrentjammed = current_time;
+jammedintervalmg = 2000;
+ismgjammed = false;
+
 standardallignsprite = image_yscale; 
 isreloading = false;
 isplanetakeoff = true;
@@ -219,6 +224,7 @@ if (restart){
           isplanecrashed = true;
         } 
         isplaneonrunway = false;
+        isplanetakeoff = false;
       }
     }
     // If plane crashed execute animation

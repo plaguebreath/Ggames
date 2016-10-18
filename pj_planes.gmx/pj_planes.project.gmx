@@ -15,6 +15,7 @@
     <sound>sound\snd_bombexp</sound>
     <sound>sound\snd_reloadmg</sound>
     <sound>sound\snd_reloadbomb</sound>
+    <sound>sound\snd_jam</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_runway</sprite>
@@ -47,6 +48,7 @@
     <script>scripts\scr_planesetonrunway.gml</script>
     <script>scripts\scr_planestall.gml</script>
     <script>scripts\scr_fliponflight.gml</script>
+    <script>scripts\scr_mgjammed.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\Main_Font</font>

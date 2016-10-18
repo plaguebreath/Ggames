@@ -34,7 +34,7 @@
              //audio_resume_sound(snd_engine1);        
              //audio_sound_gain(snd_engine1,0.1,0.2); 
              //audio_sound_gain(snd_engine1,0.5,0);      
-             audio_sound_pitch(snd_engine1, (idplane.speed + 5) * 10 / 110); 
+             audio_sound_pitch(snd_engine1, (speed + 5) * 10 / 110); 
              //audio_sound_pitch(snd_engine1, 1); 
            }
          }else{ 
@@ -43,7 +43,7 @@
            audio_stop_sound(snd_engine1);  
          } 
        
-         if (idplane.isplanecrashed){
+         if (isplanecrashed){
            //audio_pause_sound(snd_engine1);
            audio_stop_sound(snd_engine1);    
          }
@@ -58,7 +58,11 @@
      case 1:
        if !audio_is_playing(snd_mg){
         //  audio_play_sound(snd_mg,0,false);
-          audio_play_sound_on(em_player, snd_mg, false, 1);
+          if (!ismgjammed){
+            audio_play_sound_on(em_player, snd_mg, false, 1);
+          }else{
+            audio_play_sound_on(em_player, snd_jam, false, 1);
+          }
        }
        break; 
        

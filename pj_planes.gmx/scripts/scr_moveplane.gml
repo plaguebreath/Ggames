@@ -90,10 +90,12 @@ if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){
      idplane.sprite_index = sp_fokkerdown;
    }
    
-  if (firemg && !idplane.isplaneonrunway && idplane.bullets > 0) {
-    scr_mgfire(idplane);   
+  if (firemg && !idplane.isplaneonrunway &&  idplane.bullets > 0) {    
+    //if (!idplane.ismgjammed){    
+      scr_mgfire(idplane);     
+    //}      
   }
-  
+   
   if (firebomb && !idplane.isplaneonrunway && idplane.bombs > 0) {
     if (!idplane.isflipped && (idplane.direction <=90 || idplane.direction >270)) || (idplane.isflipped && (idplane.direction >90 && idplane.direction <=270)) {
       scr_bomb(idplane);
@@ -166,6 +168,9 @@ scr_fliponflight(idplane,1); // aggiorna il timer ma non controlare il flip
 }
 idplane.oldturnvalue = idplane.turnvalue;
 }
+
+if (idplane.ismgjammed) scr_mgjammed(idplane);
+
 //}
 
 

@@ -10,7 +10,8 @@
   <persistent>-1</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>// Declare standard color for drawing
+  <code>randomize();
+// Declare standard color for drawing
 draw_set_colour(c_red);
 
 global.stallroomlimity = 100;

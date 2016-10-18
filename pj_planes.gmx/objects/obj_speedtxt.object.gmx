@@ -39,6 +39,7 @@ draw_text_colour(view_xview[0]+20, view_yview[0] + 180,"Landed = " + string(obj_
 draw_text_colour(view_xview[0]+20, view_yview[0] + 200,"Stall = " + string(obj_playerplane.isplanestall),c_blue,c_blue,c_black,c_black,1 );
 draw_text_colour(view_xview[0]+20, view_yview[0] + 220,"Mouseenabled = " + string(global.mouseenabled) ,c_blue,c_blue,c_black,c_black,1 );
 draw_text_colour(view_xview[0]+20, view_yview[0] + 240,"flipped = " + string(obj_playerplane.isflipped),c_blue,c_blue,c_black,c_black,1) ;
+draw_text_colour(view_xview[0]+20, view_yview[0] + 260,"jammed = " + string(obj_playerplane.ismgjammed),c_blue,c_blue,c_black,c_black,1) ;
 
 if (global.mouseenabled){
    currentAngle = obj_playerplane.direction;
