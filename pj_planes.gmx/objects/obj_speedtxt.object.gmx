@@ -27,31 +27,41 @@
             <kind>1</kind>
             <string>draw_set_font(Main_Font)
 //draw_text(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(global.speedtxt) )
-draw_text_colour(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(obj_playerplane.speed),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 40,"Direction = " + string(obj_playerplane.direction),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 60,"Altitude = " + string(obj_playerplane.altitude),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 80,"Bullets = " + string(obj_playerplane.bullets),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 100,"Bombs = " + string(obj_playerplane.bombs),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 120,"Reloading = " + string(obj_playerplane.isreloading),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 140,"Onrunway = " + string(obj_playerplane.isplaneonrunway),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 160,"Takeoff = " + string(obj_playerplane.isplanetakeoff),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 180,"Landed = " + string(obj_playerplane.isplanelanded),c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 200,"Stall = " + string(obj_playerplane.isplanestall),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 20,"Speed = " + string(global.playerinstance.speed),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 40,"Direction = " + string(global.playerinstance.direction),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 60,"Altitude = " + string(global.playerinstance.altitude),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 80,"Bullets = " + string(global.playerinstance.bullets),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 100,"Bombs = " + string(global.playerinstance.bombs),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 120,"Reloading = " + string(global.playerinstance.isreloading),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 140,"Onrunway = " + string(global.playerinstance.isplaneonrunway),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 160,"Takeoff = " + string(global.playerinstance.isplanetakeoff),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 180,"Landed = " + string(global.playerinstance.isplanelanded),c_blue,c_blue,c_black,c_black,1 );
+draw_text_colour(view_xview[0]+20, view_yview[0] + 200,"Stall = " + string(global.playerinstance.isplanestall),c_blue,c_blue,c_black,c_black,1 );
 draw_text_colour(view_xview[0]+20, view_yview[0] + 220,"Mouseenabled = " + string(global.mouseenabled) ,c_blue,c_blue,c_black,c_black,1 );
-draw_text_colour(view_xview[0]+20, view_yview[0] + 240,"flipped = " + string(obj_playerplane.isflipped),c_blue,c_blue,c_black,c_black,1) ;
-draw_text_colour(view_xview[0]+20, view_yview[0] + 260,"jammed = " + string(obj_playerplane.ismgjammed),c_blue,c_blue,c_black,c_black,1) ;
+draw_text_colour(view_xview[0]+20, view_yview[0] + 240,"Flipped = " + string(global.playerinstance.isflipped),c_blue,c_blue,c_black,c_black,1) ;
+draw_text_colour(view_xview[0]+20, view_yview[0] + 260,"Jammed = " + string(global.playerinstance.ismgjammed),c_blue,c_blue,c_black,c_black,1) ;
+draw_text_colour(view_xview[0]+20, view_yview[0] + 280,"Fuel = " + string(round(global.playerinstance.planefuel)),c_blue,c_blue,c_black,c_black,1) ;
 
 if (global.mouseenabled){
-   currentAngle = obj_playerplane.direction;
-  desiredAngle = point_direction(obj_playerplane.x,obj_playerplane.y,mouse_x,mouse_y);
+   currentAngle = global.playerinstance.direction;
+  desiredAngle = point_direction(global.playerinstance.x,global.playerinstance.y,mouse_x,mouse_y);
   var dd = angle_difference(currentAngle, desiredAngle);
   
-  draw_text_colour(view_xview[0]+20, view_yview[0] + 240,"cangle = " + string(currentAngle) + " dangle = " + string(desiredAngle) + " da = " + string(dd) + " flipped = " + string(obj_playerplane.isflipped) ,c_blue,c_blue,c_black,c_black,1 );
+  draw_text_colour(view_xview[0]+20, view_yview[0] + 240,"cangle = " + string(currentAngle) + " dangle = " + string(desiredAngle) + " da = " + string(dd) + " flipped = " + string(global.playerinstance.isflipped) ,c_blue,c_blue,c_black,c_black,1 );
 
 }
   
-if obj_playerplane.isplanestall {
-  //draw_text_colour(view_xview[0]+400, view_yview[0] + 20,"STALL",c_blue,c_blue,c_black,c_black,1 );
+if global.playerinstance.isplanestall{
+  draw_set_font(Alert_Font)
+  draw_text_colour(view_xview[0]+400, view_yview[0] + 60,"WARNING STALL PLANE",c_red,c_red,c_yellow,c_yellow,1 );
+}
+if global.playerinstance.ismgjammed{
+  draw_set_font(Alert_Font)
+  draw_text_colour(view_xview[0]+400, view_yview[0] + 100,"MACHINEGUN JAMMED",c_red,c_red,c_yellow,c_yellow,1 );
+}
+if global.playerinstance.isreloading{
+  draw_set_font(Alert_Font)
+  draw_text_colour(view_xview[0]+400, view_yview[0] + 60,"RELOAD &amp; REFUEL",c_red,c_red,c_yellow,c_yellow,1 );
 }
 </string>
           </argument>

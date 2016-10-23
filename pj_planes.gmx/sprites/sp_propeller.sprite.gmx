@@ -21,6 +21,8 @@
   <width>256</width>
   <height>256</height>
   <frames>
-    <frame index="0">images\sp_elica_0.png</frame>
+    <frame index="0">images\sp_propeller_0.png</frame>
+    <frame index="1">images\sp_propeller_1.png</frame>
+    <frame index="2">images\sp_propeller_2.png</frame>
   </frames>
 </sprite>

@@ -7,5 +7,5 @@
      instance_destroy();
     }
   }   
-  idplane = instance_create(x, y, obj_playerplane);
-
+  
+  global.playerinstance = instance_create(-1, -1, obj_playerplane);  

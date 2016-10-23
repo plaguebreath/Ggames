@@ -2,17 +2,16 @@
   
   objid = argument0;
  
-  with (objid){ 
+  with (objid){  
     timeCurrentmg = current_time; 
-    if (timeCurrentmg - timeInitmg >= fireintervalmg ) { 
-        
+    if (timeCurrentmg - timeInitmg >= fireintervalmg ) {        
         if (!ismgjammed){
         with (instance_create(objid.x+lengthdir_x(offsetlenmg,objid.direction),objid.y+lengthdir_y(offsetlenmg,objid.direction) -5, obj_bullet)) { 
-        
         direction = objid.direction;
         image_angle =  direction;
         speed = bulletspeed;
-        objid.bullets -= 1;  
+        objid.bullets -= 1; 
+        objid.isfiremg = true; 
         }      
       }
      
@@ -27,8 +26,7 @@
     
      
       var nrandom = random(10);
-      if (nrandom >= 9.7) ismgjammed = true; 
-      show_debug_message(nrandom);
+      if (nrandom >= 9.4) ismgjammed = true;     
     }
    }
  

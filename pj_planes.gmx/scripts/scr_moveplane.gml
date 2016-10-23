@@ -13,9 +13,11 @@ var firebomb = keyboard_check(vk_ralt);
 
 //idplane.sprite_index = sp_fokker;
 //obj_plane.image_index = 0;
+planemovement = 0;
+//isfiremg = false;
 
 /// Movement check
-if (!idplane.isplanecrashed && !idplane.isreloading && !idplane.isplanestall){
+if (!idplane.isplanecrashed && !idplane.isplanestall){
 if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){   
   if (right){ 
     if (idplane.isplaneonrunway){
@@ -79,7 +81,8 @@ if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){
           idplane.turnvalue = -1 * idplane.turnfactor;  
         }      
     }   
-    idplane.sprite_index = sp_fokkerup;
+    //idplane.sprite_index = sp_fokkerup;
+    planemovement = 1;
   }else if (down && !idplane.isplaneonrunway){ 
       if (!idplane.isflipped){
           idplane.turnvalue = -1 *idplane.turnfactor;  
@@ -87,7 +90,8 @@ if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){
           idplane.turnvalue =  idplane.turnfactor;  
         }     
     //idplane.direction -= idplane.turnfactor ;
-     idplane.sprite_index = sp_fokkerdown;
+     //idplane.sprite_index = sp_fokkerdown;
+     planemovement = -1;
    }
    
   if (firemg && !idplane.isplaneonrunway &&  idplane.bullets > 0) {    
@@ -143,7 +147,7 @@ if (global.mouseenabled){
           idplane.turnvalue = -1 * idplane.turnfactor;  
         }      
       }   
-    idplane.sprite_index = sp_fokkerup;
+    //idplane.sprite_index = sp_fokkerup;
     }else if (dmouse == -1){
       down = true;
       //turn down
@@ -154,7 +158,7 @@ if (global.mouseenabled){
           idplane.turnvalue =  idplane.turnfactor;  
         }     
         //idplane.direction -= idplane.turnfactor ;
-        idplane.sprite_index = sp_fokkerdown;
+        //idplane.sprite_index = sp_fokkerdown;
       }
     }
   }

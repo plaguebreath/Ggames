@@ -8,9 +8,9 @@
    
   // Take care of the flip of image based on the direction
  if (idplane.direction >= 90 && idplane.direction <= 270){
-   idplane.image_yscale = -1 * idplane.standardallignsprite;
+   idplane.image_yscale = -1 * idplane.standardspriteyscale;
  }else{
-   idplane.image_yscale = idplane.standardallignsprite;
+   idplane.image_yscale = idplane.standardspriteyscale;
  }
    idplane.isflipped = false;
    if ( idplane.x > room_width + idplane.sprite_width )
