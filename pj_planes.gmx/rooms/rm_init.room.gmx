@@ -34,6 +34,9 @@ switch (os_type)
    case os_android: global.Config = 1; break;   
    }
    
+global.playerinstance = -1;
+global.restart = false;
+
 //Call the next room
 room_goto_next()</code>
   <enableViews>0</enableViews>

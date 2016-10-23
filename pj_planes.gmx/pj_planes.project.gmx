@@ -16,13 +16,11 @@
     <sound>sound\snd_reloadmg</sound>
     <sound>sound\snd_reloadbomb</sound>
     <sound>sound\snd_jam</sound>
+    <sound>sound\snd_refuel</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sp_runway</sprite>
     <sprite>sprites\sp_ground</sprite>
-    <sprite>sprites\sp_fokker</sprite>
-    <sprite>sprites\sp_fokkerdown</sprite>
-    <sprite>sprites\sp_fokkerup</sprite>
     <sprite>sprites\sp_fokkercrash</sprite>
     <sprite>sprites\sp_bullet</sprite>
     <sprite>sprites\sp_bomb</sprite>
@@ -30,8 +28,8 @@
     <sprite>sprites\spritet2</sprite>
     <sprite>sprites\spritemg</sprite>
     <sprite>sprites\spritebomb</sprite>
-    <sprite>sprites\sp_bodyplane</sprite>
-    <sprite>sprites\sp_elica</sprite>
+    <sprite>sprites\sp_fokkerbody</sprite>
+    <sprite>sprites\sp_propeller</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_wartime</background>
@@ -51,22 +49,22 @@
     <script>scripts\scr_planestall.gml</script>
     <script>scripts\scr_fliponflight.gml</script>
     <script>scripts\scr_mgjammed.gml</script>
+    <script>scripts\scr_ctrlpropeller.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\Main_Font</font>
+    <font>fonts\Alert_Font</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_ground</object>
     <object>objects\obj_runway</object>
     <object>objects\obj_playerplane</object>
-    <object>objects\obj_playerplane2</object>
-    <object>objects\obj_speedtxt</object>
+    <object>objects\obj_propeller</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_bomb</object>
+    <object>objects\obj_speedtxt</object>
     <object>objects\obj_gui</object>
     <object>objects\obj_checkwindow</object>
-    <object>objects\obj_bodyplane</object>
-    <object>objects\obj_elica</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>

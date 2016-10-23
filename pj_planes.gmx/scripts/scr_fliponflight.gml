@@ -13,10 +13,10 @@ var firsttimeloop;
          // Take care of the flip of image based on the direction         
          show_debug_message("flipping")
  if (direction >= 90 && direction <= 270){
-   image_yscale = -1 * standardallignsprite;
+   image_yscale = -1 * standardspriteyscale;
    isflipped = true;
  }else{
-   image_yscale = standardallignsprite;
+   image_yscale = standardspriteyscale;
    isflipped = false;
  }
  
