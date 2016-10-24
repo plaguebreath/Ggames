@@ -28,8 +28,8 @@
             <string>//var em_player;
 
 depth = -100;
-image_xscale = 0.35; // xscale of image
-image_yscale = 0.35; // yscale of image
+image_xscale = 0.45; // xscale of image
+image_yscale = 0.45; // yscale of image
 //image_index = 0;
 
 timeInitrefuel = current_time; // initialize the Refuel event time
@@ -53,7 +53,7 @@ speedplanemax = 10; // Set up max speed of the plane
 turnfactor = 2; // Set che max turn of the plane when pressing up and down
 turnvalue = 0; // set default value of turn
 oldturnvalue = 0; // Variabile for track if the plane is moving forward or still rolling
-takeoffspeed = 4; // Set the take off speed for allow plane to go up from the runway 
+takeoffspeed = 5; // Set the take off speed for allow plane to go up from the runway 
 facceleration = 0.10; // Set acceleration value of plane
 fvalue = 0; // Set the value of force applied to plane based on the facceleration and some other parameters
 enginestarted = false; // Set the enginestart event

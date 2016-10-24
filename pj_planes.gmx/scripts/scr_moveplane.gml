@@ -107,7 +107,7 @@ if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){
   }
   
   if keyboard_check_pressed(ord('M')){
-    global.mouseenabled = !global.mouseenabled
+    //global.mouseenabled = !global.mouseenabled
   }
   
    if keyboard_check_pressed(vk_escape){

@@ -13,8 +13,8 @@ var oldlandingstate;
       if (speed <= 0.5) {      
         isplanelanded = true; 
         if (oldlandingstate <> isplanelanded){
-         scr_planesetonrunway(id);        
-         isreloading = true;            
+         isreloading = true;      
+         scr_planesetonrunway(id);                    
         }       
       }else{
          isplanelanded = false;

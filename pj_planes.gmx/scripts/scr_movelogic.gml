@@ -26,7 +26,7 @@ if (!idplane.isplanecrashed){
       }    
     }else{
        if (idplane.planefuel > 0){
-         idplane.vspeed += idplane.gravityplane - (idplane.speed * 2.1/100); 
+         idplane.vspeed += idplane.gravityplane - (idplane.speed * 2.05/100); 
        }else{
          idplane.vspeed += idplane.gravityplane -0.02 ;
        }
