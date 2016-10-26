@@ -41,6 +41,10 @@ draw_text_colour(view_xview[0]+20, view_yview[0] + 220,"Mouseenabled = " + strin
 draw_text_colour(view_xview[0]+20, view_yview[0] + 240,"Flipped = " + string(global.playerinstance.isflipped),c_blue,c_blue,c_black,c_black,1) ;
 draw_text_colour(view_xview[0]+20, view_yview[0] + 260,"Jammed = " + string(global.playerinstance.ismgjammed),c_blue,c_blue,c_black,c_black,1) ;
 draw_text_colour(view_xview[0]+20, view_yview[0] + 280,"Fuel = " + string(round(global.playerinstance.planefuel)),c_blue,c_blue,c_black,c_black,1) ;
+draw_text_colour(view_xview[0]+20, view_yview[0] + 300,"Fvalue = " + string_format(global.playerinstance.fvalue,3,4),c_blue,c_blue,c_black,c_black,1) ;
+draw_text_colour(view_xview[0]+20, view_yview[0] + 320,"Facceleration = " + string_format(global.playerinstance.facceleration,3,4),c_blue,c_blue,c_black,c_black,1) ;
+draw_text_colour(view_xview[0]+20, view_yview[0] + 340,"vspeed = " + string_format(global.playerinstance.vspeed,3,4),c_blue,c_blue,c_black,c_black,1) ;
+
 
 if (global.mouseenabled){
    currentAngle = global.playerinstance.direction;

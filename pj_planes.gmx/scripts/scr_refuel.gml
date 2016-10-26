@@ -30,8 +30,8 @@ with (idplane){
   
    //reload Fuel
   if (timeCurrentrefuel - timeInitrefuel >= timebeforerefuel) { 
-    if (planefuel + 20  < MAX_planefuel){
-      planefuel += 20;
+    if (planefuel  < MAX_planefuel){
+      planefuel += 10;
       if !(audio_is_playing(snd_refuel)) audio_play_sound_on(em_player, snd_refuel, false, 1);   
     }else{
       planefuel = MAX_planefuel;

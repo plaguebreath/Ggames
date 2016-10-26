@@ -33,6 +33,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bg_wartime</background>
+    <background>background\bg_blue</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -68,6 +69,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>
+    <room>rooms\rm_testing</room>
     <room>rooms\rm_flight</room>
   </rooms>
   <help>

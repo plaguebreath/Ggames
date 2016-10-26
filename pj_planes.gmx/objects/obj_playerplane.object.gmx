@@ -28,8 +28,8 @@
             <string>//var em_player;
 
 depth = -100;
-image_xscale = 0.45; // xscale of image
-image_yscale = 0.45; // yscale of image
+image_xscale = 0.50; // xscale of image
+image_yscale = 0.50; // yscale of image
 //image_index = 0;
 
 timeInitrefuel = current_time; // initialize the Refuel event time
@@ -54,8 +54,10 @@ turnfactor = 2; // Set che max turn of the plane when pressing up and down
 turnvalue = 0; // set default value of turn
 oldturnvalue = 0; // Variabile for track if the plane is moving forward or still rolling
 takeoffspeed = 5; // Set the take off speed for allow plane to go up from the runway 
-facceleration = 0.10; // Set acceleration value of plane
+facceleration = 0; // Set acceleration value of plane
 fvalue = 0; // Set the value of force applied to plane based on the facceleration and some other parameters
+MAX_fvalue = 0.07;
+MIN_fvalue = -0.07;
 enginestarted = false; // Set the enginestart event
 altitude = 0; // Value for check the altitude of the plane
 
@@ -212,13 +214,15 @@ if (global.restart){
      // Collisions check on runway
      //show_debug_message(y + vspeed + 2);
      //show_debug_message(obj_runway.y);
-    //if  place_meeting(x,y + vspeed + 2 ,obj_runway){    
+    //if  place_meeting(x,y + vspeed + 2 ,obj_runway){
+     
      if  place_meeting(x,y + vspeed ,obj_runway){   
+     if (!isplaneonrunway &amp;&amp; !isplanecrashed) y += (vspeed + 2);    
       // if (!isplaneonrunway &amp;&amp; !isplanecrashed){
       //  if (direction &lt;= 330){ direction = 10} else direction  = 135;
       //}    
       // funziona 
-      if (!isplaneonrunway &amp;&amp; !isplanecrashed) y += vspeed + 2;                
+      ////if (!isplaneonrunway &amp;&amp; !isplanecrashed) y += vspeed + 2;                
       if (!isflipped &amp;&amp; (direction &gt;= 330 || direction &lt;= 30)) || (isflipped &amp;&amp; (direction &gt;= 150 &amp;&amp; direction &lt;= 210)) {
         isplaneonrunway = true;
       }else{
@@ -343,7 +347,7 @@ if (!isplanecrashed){
   draw_self()
 }
 //Draw Bounding Box around Object
-//draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
+draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1)
 
 </string>
           </argument>

@@ -16,22 +16,22 @@ if (global.audiosfx ==1){
    audio_set_master_gain(0, global.soundvolume);
  
    if (global.soundvolume > 0){
-     if (!idplane.isplanecrashed){
+     if (!isplanecrashed){
+          
        switch (typeofsound){
          case 0:
-           if (idplane.enginestarted){
-             if !audio_is_playing(snd_enginestart){
-               audio_play_sound_on(em_player, snd_enginestart, false, 1);               
-               //audio_pause_sound(snd_engine1);       
-               idplane.enginestarted = false; 
-             }    
+           if (enginestarted){
+             if !audio_is_playing(snd_enginestart){               
+               audio_play_sound_on(em_player, snd_enginestart, false, 1);                                 
+             }   
+             enginestarted = false;  
            }
        
            if (!isplanestall){
              if audio_is_playing(snd_engine0) audio_stop_sound(snd_engine0);
-             if (idplane.speed > 0){
+             if (speed > 0){
                if !audio_is_playing(snd_enginestart){  
-                 if !audio_is_playing(snd_engine1) audio_play_sound_on(em_player,snd_engine1,true,1);
+                 if !audio_is_playing(snd_engine1) audio_play_sound_on(em_player,snd_engine1,true,2);
                  //audio_resume_sound(snd_engine1);        
                  //audio_sound_gain(snd_engine1,0.1,0.2); 
                  //audio_sound_gain(snd_engine1,0.5,0);
@@ -55,7 +55,7 @@ if (global.audiosfx ==1){
            }else{
              // on stall
              audio_stop_sound(snd_engine1);  
-             if !audio_is_playing(snd_engine0) audio_play_sound_on(em_player,snd_engine0,true,1);
+             if !audio_is_playing(snd_engine0) audio_play_sound_on(em_player,snd_engine0,true,2);
            }  
            break;   
        

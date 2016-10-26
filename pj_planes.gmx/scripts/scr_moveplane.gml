@@ -2,6 +2,7 @@ var idplane;
 idplane = argument0;
 
 idplane.turnvalue = 0;
+//idplane.facceleration = 0;
 
 /// Local Variables
 var right = keyboard_check(ord('D')); 
@@ -10,6 +11,7 @@ var up = keyboard_check(ord('W'));
 var down = keyboard_check(ord('S'));  
 var firemg = keyboard_check(vk_space);  
 var firebomb = keyboard_check(vk_ralt);  
+var test = keyboard_check(ord('O')) 
 
 //idplane.sprite_index = sp_fokker;
 //obj_plane.image_index = 0;
@@ -18,50 +20,28 @@ planemovement = 0;
 
 /// Movement check
 if (!idplane.isplanecrashed && !idplane.isplanestall){
-if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){   
+if (keyboard_check(vk_anykey) || device_mouse_check_button(0, mb_left)){ 
+   if (test) idplane.vspeed += 1;  
   if (right){ 
-    if (idplane.isplaneonrunway){
-      if (idplane.speed == 0){
-        idplane.enginestarted = true;
-      }
-      if (idplane.speed < 1) {
-        fvalue = idplane.facceleration/10 ;
-        //motion_add(idplane.direction, );
-      }else{ 
-        //motion_add(idplane.direction, idplane.facceleration/2);
-        fvalue = idplane.facceleration/2 ;
-      }        
-    }else{
-      fvalue = idplane.facceleration/2 ;
-      
-      //if (idplane.speed + idplane.facceleration/2 < idplane.speedplanemax){ 
-      //  motion_add(idplane.direction, idplane.facceleration/2);
-      //}else{
-      // idplane.speed = idplane.speedplanemax;
-      //}
-    }
-  }else if (left){
-    //if (!idplane.isplanelanding){ 
-    if (idplane.speed < 1) {
-       if (idplane.speed - idplane.facceleration/5  > 0){
-         fvalue = -1 * idplane.facceleration/5 ;
+    if (idplane.facceleration < MAX_fvalue){
+       if (idplane.facceleration > 0){
+         idplane.facceleration += 0.0004 + abs(idplane.facceleration) * 0.025;
+       }else{
+         idplane.facceleration += 0.001 + abs(idplane.facceleration) * 0.05;
        }
-    }else{
-    //if (idplane.speed - (idplane.facceleration /2)  > 0) 
-      fvalue = -1 * idplane.facceleration /2 ;
+       if (idplane.facceleration > MAX_fvalue) idplane.facceleration = MAX_fvalue;
     }
-   // if (idplane.isplaneonrunway){ 
-   //   if (idplane.speed < idplane.takeoffspeed && idplane.speed - idplane.facceleration /2  > 0) fvalue = -1 * idplane.facceleration /2 ;
-   // }else{
-   //   if (idplane.speed > 2) fvalue = -1 * idplane.facceleration /2 ;
-      //if (idplane.speed > 1) motion_add(idplane.direction, -1 * (idplane.facceleration))
-      //if (idplane.speed -1 * idplane.facceleration / 2 > 2){ 
-      //  motion_add(idplane.direction,  -1 * idplane.facceleration / 2)
-      //}else{
-      //  idplane.speed = 2;
-      //}
-   // }
-    //}
+    //if (facceleration < MAX_facceleration){ facceleration += faccelerationstep; }else{facceleration = MAX_facceleration;}      
+  }else if (left){
+    //if (facceleration > 0){ facceleration -= faccelerationstep; }else{facceleration = 0;}
+    if (idplane.facceleration > MIN_fvalue){
+       if (idplane.facceleration > 0){
+         idplane.facceleration -= 0.0030 + abs(idplane.facceleration) * 0.025;
+       }else{
+         idplane.facceleration -= 0.001 + abs(idplane.facceleration) * 0.0025;
+       }
+       if (idplane.facceleration < MIN_fvalue) idplane.facceleration = MIN_fvalue;
+    }
   }
   
   // up or down on keyboard for change angle of airplane
